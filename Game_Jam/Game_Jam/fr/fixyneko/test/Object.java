@@ -6,14 +6,14 @@ import java.util.ArrayList;
 @SuppressWarnings("serial")
 public class Object extends Polygon {
 
-	float x;
-	float y;
+	private float x;
+	private float y;
 	ArrayList<Triangle> tri;
 
 	Vect pos, vel;
 
-	float rot, rotVel;
-	float rotInertia;
+	private float rot, rotVel;
+	private float rotInertia;
 
 	public Object(float x, float y) {
 		tri = new ArrayList<Triangle>(1);
