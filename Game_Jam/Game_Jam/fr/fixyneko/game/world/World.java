@@ -121,17 +121,20 @@ public class World implements Drawable, MouseListener {
 
 	public Vector<Unit> getUnits(Player p) {
 		Vector<Unit> u = new Vector<Unit>();
-		for (int i = 0; i < u.size(); i++) {
-			if(u.get(i).getPlayer() == p)
-				u.add(u.get(i));
+		for (int i = 0; i < units.size(); i++) {
+			if (units.get(i).getPlayer() == p)
+				u.add(units.get(i));
 		}
 		return u;
 	}
+
 	public Vector<Case> getCases(Player p) {
-		Vector<Unit> u = new Vector<Unit>();
-		for (int i = 0; i < u.size(); i++) {
-			if(u.get(i).getPlayer() == p)
-				u.add(u.get(i));
+		Vector<Case> u = new Vector<Case>();
+		for (int x = 0; x < units.size(); x++) {
+			for (int y = 0; y < units.size(); y++) {
+				if (cases[x][y].getPlayer() == p)
+					u.add(cases[x][y]);
+			}
 		}
 		return u;
 	}
