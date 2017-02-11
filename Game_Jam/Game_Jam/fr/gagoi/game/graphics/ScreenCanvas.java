@@ -14,14 +14,17 @@ public class ScreenCanvas extends Canvas {
 
 	public ScreenCanvas() {
 		img = new BufferedImage(800, 800, BufferedImage.TYPE_INT_RGB);
+		drawables = new Vector<>();
 	}
 
 	public void render() {
-		System.out.println(this.hasFocus());
 		Graphics g = img.getGraphics();
 		g.clearRect(0, 0, 800, 800);
-		g.setColor(Color.BLUE);
-		g.fillRect(20, 20, 250, 250);
+
+		if(!drawables.isEmpty())
+			for (Drawable drawable : drawables) 
+				drawable.draw(g);
+			
 		getGraphics().drawImage(img, 0, 0, null);
 	}
 }
