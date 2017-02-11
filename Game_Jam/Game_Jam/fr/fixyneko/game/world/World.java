@@ -56,8 +56,8 @@ public class World implements Drawable, MouseListener {
 				int y;
 
 				do {
-					x = new Random().nextInt(cases.length - 1);
-					y = new Random().nextInt(cases[0].length - 1);
+					x = new Random().nextInt(cases.length);
+					y = new Random().nextInt(cases[0].length);
 				} while (cases[x][y] == null);
 
 				cases[x][y] = new Case(i + 1);
@@ -116,8 +116,8 @@ public class World implements Drawable, MouseListener {
 			double deltY = curMouseY - prevMouseY;
 			camX -= deltX;
 			camY -= deltY;
-			camX = Math.max(0, Math.min(camX, cases.length * scl - 774));
-			camY = Math.max(0, Math.min(camY, cases[0].length * scl - 770));
+			camX = Math.max(0, Math.min(camX, cases.length * scl - 750));
+			camY = Math.max(0, Math.min(camY, cases[0].length * scl - 750));
 		}
 
 		prevMouseX = curMouseX;
