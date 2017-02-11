@@ -1,4 +1,4 @@
-package fr.fixyneko.test;
+package zzzold.fr.fixyneko.test;
 
 import java.awt.Polygon;
 import java.util.ArrayList;

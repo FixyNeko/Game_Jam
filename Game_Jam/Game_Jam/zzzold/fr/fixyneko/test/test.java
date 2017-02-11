@@ -1,4 +1,4 @@
-package fr.fixyneko.test;
+package zzzold.fr.fixyneko.test;
 
 public class test {
 
