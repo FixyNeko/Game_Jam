@@ -2,6 +2,7 @@ package fr.gagoi.game.core;
 
 import fr.fixyneko.game.world.World;
 import fr.gagoi.game.graphics.Display;
+import fr.gagoi.game.utils.Player;
 
 public class Game implements Runnable {
 
@@ -11,7 +12,9 @@ public class Game implements Runnable {
 	private boolean isRunning = true;
 	private final Thread t;
 
+	private Player p1, p2;
 	private int xOffset, yOffset;
+	private int playersTurn;
 
 	public Game() {
 		this.display = new Display();
@@ -26,13 +29,14 @@ public class Game implements Runnable {
 	@Override
 	public void run() {
 		// TODO : Mettre du tour par tour.
-		World world = new World(21,12,64);
-		while (isRunning) {
-			update();
-		}
+		World world = new World(21, 12, 64);
+		p1 = new Player(0, 0, "Player 1");
+		p2 = new Player(1, 0, "Player 2");
+		update();
 	}
 
 	public void update() {
+		playersTurn = (playersTurn + 1) % 2;
 	}
 
 	public int getXOffset() {
@@ -53,5 +57,9 @@ public class Game implements Runnable {
 
 	public static void main(String args[]) {
 		GAME = new Game();
+	}
+
+	public int getPlayersTurn() {
+		return playersTurn;
 	}
 }
