@@ -17,7 +17,7 @@ public class Card_ReussiteEco implements Card {
 
 	@Override
 	public String getImage() {
-		return "/cartes/lois/reussite_economique.jpg";
+		return "/cartes/ressources/reussite_economique.jpg";
 	}
 
 	@Override

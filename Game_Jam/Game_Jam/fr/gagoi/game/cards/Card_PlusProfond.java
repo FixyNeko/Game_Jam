@@ -17,7 +17,7 @@ public class Card_PlusProfond implements Card {
 
 	@Override
 	public String getImage() {
-		return "/cartes/lois/plus_profond.jpg";
+		return "/cartes/ressources/plus_profond.jpg";
 	}
 
 	@Override
