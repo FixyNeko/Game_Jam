@@ -1,9 +1,21 @@
 package fr.fixyneko.game.world;
 
-public class World {
+import java.awt.Graphics;
 
-	public World() {
-		// TODO Auto-generated constructor stub
+import fr.gagoi.game.graphics.Drawable;
+
+public class World implements Drawable{
+
+	Case[][] cases;
+	
+	public World(int x, int y) {
+		cases = new Case[x][y];
+	}
+
+	@Override
+	public void draw(Graphics g) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
