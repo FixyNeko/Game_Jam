@@ -6,7 +6,7 @@ import fr.gagoi.game.graphics.Drawable;
 
 public interface Card extends Drawable {
 
-	public Image getImage();
+	public String getImage();
 	
 	public void onUse();
 }

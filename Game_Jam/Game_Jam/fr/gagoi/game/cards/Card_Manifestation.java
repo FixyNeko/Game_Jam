@@ -5,9 +5,9 @@ import java.awt.Image;
 
 import fr.gagoi.game.core.Game;
 
-public class Card_PlusProfond implements Card {
+public class Card_Manifestation implements Card {
 
-	public Card_PlusProfond() {
+	public Card_Manifestation() {
 	}
 	
 	@Override
@@ -17,12 +17,12 @@ public class Card_PlusProfond implements Card {
 
 	@Override
 	public String getImage() {
-		return "/cartes/lois/plus_profond.jpg";
+		return "/cartes/lois/manifestation.jpg";
 	}
 
 	@Override
 	public void onUse() {
-		Game.GAME.getPlayer(Game.GAME.getPlayersTurn()).getResourceList().addResource(2, 250);
+		Game.GAME.getPlayer(Game.GAME.getPlayersTurn()).getResourceList().multiplyResource(4,(0.8f));
 	}
 
 }

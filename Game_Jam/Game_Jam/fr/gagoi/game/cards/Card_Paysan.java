@@ -14,8 +14,8 @@ public class Card_Paysan implements Card {
 	}
 
 	@Override
-	public Image getImage() {
-		return null;
+	public String getImage() {
+		return "/cartes/lois/paysan.jpg";
 	}
 
 	@Override

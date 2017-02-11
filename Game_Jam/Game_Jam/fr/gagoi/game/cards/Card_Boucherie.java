@@ -16,8 +16,8 @@ public class Card_Boucherie implements Card {
 	}
 
 	@Override
-	public Image getImage() {
-		return null;
+	public String getImage() {
+		return "/cartes/lois/boucherie.jpg";
 	}
 
 	@Override

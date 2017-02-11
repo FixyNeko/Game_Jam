@@ -14,8 +14,8 @@ public class Card_Tank implements Card {
 	}
 
 	@Override
-	public Image getImage() {
-		return null;
+	public String getImage() {
+	 return "/cartes/lois/tank.jpg";
 	}
 
 	@Override

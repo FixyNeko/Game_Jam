@@ -14,8 +14,8 @@ public class Card_Soldat implements Card {
 	}
 
 	@Override
-	public Image getImage() {
-		return null;
+	public String getImage() {
+		return "/cartes/lois/soldat.jpg";
 	}
 
 	@Override
