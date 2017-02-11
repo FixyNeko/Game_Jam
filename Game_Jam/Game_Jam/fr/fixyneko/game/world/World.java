@@ -1,8 +1,8 @@
 package fr.fixyneko.game.world;
 
-public class world {
+public class World {
 
-	public world() {
+	public World() {
 		// TODO Auto-generated constructor stub
 	}
 
