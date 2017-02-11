@@ -55,9 +55,8 @@ public class Game implements Runnable {
 		while (getPlayer(playersTurn).isPlaying())
 			;
 
-		for (Unit u : getWorld().getUnits(getPlayer(playersTurn))) {
+		for (Unit u : getWorld().getUnits(getPlayer(playersTurn)))
 			u.update();
-		}
 
 		playersTurn = (playersTurn + 1) % 2;
 	}
