@@ -16,7 +16,7 @@ import fr.gagoi.game.graphics.Drawable;
 
 public class World implements Drawable, MouseListener {
 
-	public static final int TUPE_GRASS = 0;
+	public static final int TYPE_GRASS = 0;
 	public static final int TYPE_WOOD = 1;
 	public static final int TYPE_FOOD = 2;
 	public static final int TYPE_ORE = 3;
@@ -44,9 +44,9 @@ public class World implements Drawable, MouseListener {
 		scl = scl_;
 		init();
 		initSprites();
-		
-		units.add(new Unit(10, 10, 5, 5, 0));//pop a unit
-		
+
+		units.add(new Unit(10, 10, 5, 5, 0));// pop a unit
+
 		Game.GAME.getDisplay().getCanvas().getDrawables().add(this);
 		Game.GAME.getDisplay().getCanvas().addMouseListener(this);
 	}
@@ -91,17 +91,17 @@ public class World implements Drawable, MouseListener {
 		}
 
 		try {
-			sprites[4] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/units/" + "pecore.png"));
-			// sprites[5] =
+			sprites[0 + casesNum] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/units/" + "pecore.png"));
+			// sprites[1 + casesNum] =
 			// ImageIO.read(getClass().getResourceAsStream("/resources/textures/units/"
 			// + "case_void.png"));
-			// sprites[6] =
+			// sprites[2 + casesNum] =
 			// ImageIO.read(getClass().getResourceAsStream("/resources/textures/units/"
 			// + "case_void.png"));
-			// sprites[7] =
+			// sprites[3 + casesNum] =
 			// ImageIO.read(getClass().getResourceAsStream("/resources/textures/units/"
 			// + "case_void.png"));
-			// sprites[8] =
+			// sprites[4 + casesNum] =
 			// ImageIO.read(getClass().getResourceAsStream("/resources/textures/units/"
 			// + "case_void.png"));
 		} catch (Exception e) {
@@ -109,6 +109,19 @@ public class World implements Drawable, MouseListener {
 
 	}
 
+	void addUnit(Unit u) {
+		units.add(u);
+	}
+
+	void removeUnit(Unit u) {
+		units.removeElement(u);
+	}
+
+	
+	int pointerX = 0;
+	int pointerY = 0;
+	
+	
 	@Override
 	public void draw(Graphics g) {
 		// TODO Auto-generated method stub
@@ -143,16 +156,31 @@ public class World implements Drawable, MouseListener {
 			if (((x + 1) * scl - camX > 0) && (x * scl - camX) < 774 && ((y + 1) * scl - camY) > 0
 					&& (y * scl - camY) < 770) {
 				if (units != null)
-					g.drawImage(sprites[units.get(i).getType() + casesNum -1], units.get(i).getX() * scl - camX + 313,
+					g.drawImage(sprites[units.get(i).getType() + casesNum - 1], units.get(i).getX() * scl - camX + 313,
 							units.get(i).getY() * scl - camY, null);
 			}
 		}
 
 		g.drawImage(HUD, 0, 0, null);
+		
+		g.drawOval(pointerX-25, pointerY-25, 50, 50);
 	}
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
+		
+		pointerX = e.getX();
+		pointerY = e.getY();
+		
+		//pointerX = 
+		
+		for (int i = 0; i < units.size(); i++) {
+			int deltaX = units.get(i).getX() - e.getX();
+			int deltaY = units.get(i).getY() - e.getY();
+			if (deltaX > 0 && deltaX < 64 && deltaX < 64 && deltaY < 64) {
+				
+			}
+		}
 	}
 
 	@Override
