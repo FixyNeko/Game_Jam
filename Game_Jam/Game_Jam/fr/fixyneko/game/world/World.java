@@ -23,6 +23,7 @@ public class World implements Drawable, MouseListener {
 	public static final int TYPE_CITY = 4;
 
 	Case[][] cases;
+	Units[] units;
 	int scl;
 
 	boolean scroll = false;
@@ -32,13 +33,13 @@ public class World implements Drawable, MouseListener {
 	int resources[] = { 50, 50, 50, 50 };
 
 	BufferedImage HUD;
-	BufferedImage[] sprites = new BufferedImage[5];
+	BufferedImage[] sprites = new BufferedImage[5 + 5];
 
 	public World(int x, int y, int scl_) {
 		cases = new Case[x][y];
 		scl = scl_;
 		init();
-		initSprite();
+		initSprites();
 		Game.GAME.getDisplay().getCanvas().getDrawables().add(this);
 		Game.GAME.getDisplay().getCanvas().addMouseListener(this);
 	}
@@ -72,36 +73,23 @@ public class World implements Drawable, MouseListener {
 		}
 	}
 
-	void initSprite() {
-		for (int i = 0; i < sprites.length; i++) {
-			String path;
-			switch (i) {
-			case TYPE_WOOD:
-				path = "case_wood.png";
-				break;
-			case TYPE_FOOD:
-				path = "case_food.png";
-				break;
-			case TYPE_ORE:
-				path = "case_ore.png";
-				break;
-			case TYPE_CITY:
-				path = "case_city.png";
-				break;
-			default:
-				path = "case_void.png";
-			}
-
-			try {
-				sprites[i] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/world/" + path));
-			} catch (IOException e) {
-				sprites[i] = new BufferedImage(64, 64, BufferedImage.TYPE_INT_RGB);
-				Graphics g = sprites[i].getGraphics();
-				g.setColor(Color.RED);
-				g.fillRect(0, 0, 64, 64);
-				e.printStackTrace();
-			}
-		}
+	void initSprites() {
+		try{
+		sprites[0] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/world/" + "case_wood.png"));
+		sprites[1] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/world/" + "case_food.png"));
+		sprites[2] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/world/" + "case_ore.png"));
+		sprites[3] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/world/" + "case_city.png"));
+		sprites[4] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/world/" + "case_void.png"));
+		} catch (Exception e){}
+		
+		try{
+		sprites[4] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/units/" + "case_void.png"));
+		sprites[5] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/units/" + "case_void.png"));
+		sprites[6] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/units/" + "case_void.png"));
+		sprites[7] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/units/" + "case_void.png"));
+		sprites[8] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/units/" + "case_void.png"));
+		} catch (Exception e) {}
+		
 	}
 
 	@Override
