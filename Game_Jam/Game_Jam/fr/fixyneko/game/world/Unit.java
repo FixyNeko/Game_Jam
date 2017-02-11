@@ -13,6 +13,9 @@ public class Unit {
 		this.posY = y;
 		this.unitType = uT;
 	}
+	
+	void update(){
+	}
 
 	public int getType() {
 		return this.unitType;
