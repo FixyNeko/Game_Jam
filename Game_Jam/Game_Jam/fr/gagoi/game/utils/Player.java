@@ -1,11 +1,5 @@
 package fr.gagoi.game.utils;
 
-import java.awt.Graphics;
-
-import fr.gagoi.game.cards.Card;
-import fr.gagoi.game.core.Game;
-import fr.gagoi.game.graphics.Drawable;
-
 public class Player {
 
 	public static int CHARACTER_RICH = 0;
