@@ -7,6 +7,7 @@ import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Random;
+import java.util.Vector;
 
 import javax.imageio.ImageIO;
 
@@ -22,7 +23,8 @@ public class World implements Drawable, MouseListener {
 	public static final int TYPE_CITY = 4;
 
 	Case[][] cases;
-	Units[] units;
+	Vector<Unit> units = new Vector<Unit>();
+
 	int scl;
 
 	boolean scroll = false;
@@ -30,7 +32,7 @@ public class World implements Drawable, MouseListener {
 	int camX = 0, camY = 0;
 
 	int resources[] = { 50, 50, 50, 50 };
-	
+
 	int casesNum = 5;
 	int unitsNum = 5;
 
@@ -42,6 +44,9 @@ public class World implements Drawable, MouseListener {
 		scl = scl_;
 		init();
 		initSprites();
+		
+		units.add(new Unit(10, 10, 5, 5, 0));//pop a unit
+		
 		Game.GAME.getDisplay().getCanvas().getDrawables().add(this);
 		Game.GAME.getDisplay().getCanvas().addMouseListener(this);
 	}
@@ -63,7 +68,7 @@ public class World implements Drawable, MouseListener {
 					y = new Random().nextInt(cases[0].length);
 				} while (cases[x][y] == null);
 
-				cases[x][y] = new Case(i + 1);
+				cases[x][y] = new Case(i);
 			}
 		} // put ressources randomly in specified amounts on world (overwrite)
 
@@ -77,20 +82,28 @@ public class World implements Drawable, MouseListener {
 
 	void initSprites() {
 		try {
-			sprites[0] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/world/" + "case_wood.png"));
-			sprites[1] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/world/" + "case_food.png"));
-			sprites[2] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/world/" + "case_ore.png"));
-			sprites[3] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/world/" + "case_city.png"));
-			sprites[4] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/world/" + "case_void.png"));
+			sprites[1] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/world/" + "case_wood.png"));
+			sprites[2] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/world/" + "case_food.png"));
+			sprites[3] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/world/" + "case_ore.png"));
+			sprites[4] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/world/" + "case_city.png"));
+			sprites[0] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/world/" + "case_void.png"));
 		} catch (Exception e) {
 		}
 
 		try {
-			sprites[4] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/units/" + "case_void.png"));
-			sprites[5] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/units/" + "case_void.png"));
-			sprites[6] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/units/" + "case_void.png"));
-			sprites[7] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/units/" + "case_void.png"));
-			sprites[8] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/units/" + "case_void.png"));
+			sprites[4] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/units/" + "pecore.png"));
+			// sprites[5] =
+			// ImageIO.read(getClass().getResourceAsStream("/resources/textures/units/"
+			// + "case_void.png"));
+			// sprites[6] =
+			// ImageIO.read(getClass().getResourceAsStream("/resources/textures/units/"
+			// + "case_void.png"));
+			// sprites[7] =
+			// ImageIO.read(getClass().getResourceAsStream("/resources/textures/units/"
+			// + "case_void.png"));
+			// sprites[8] =
+			// ImageIO.read(getClass().getResourceAsStream("/resources/textures/units/"
+			// + "case_void.png"));
 		} catch (Exception e) {
 		}
 
@@ -124,12 +137,14 @@ public class World implements Drawable, MouseListener {
 			}
 		}
 
-		for (int i = 0; i < units.length; i++) {
-			int x = units[i].getX();
-			int y = units[i].getY();
+		for (int i = 0; i < units.size(); i++) {
+			int x = units.get(i).getX();
+			int y = units.get(i).getY();
 			if (((x + 1) * scl - camX > 0) && (x * scl - camX) < 774 && ((y + 1) * scl - camY) > 0
 					&& (y * scl - camY) < 770) {
-				g.drawImage(sprites[units[i].getType() + casesNum], units[i].getX() * scl - camX + 313, units[i].getY() * scl - camY, null);
+				if (units != null)
+					g.drawImage(sprites[units.get(i).getType() + casesNum -1], units.get(i).getX() * scl - camX + 313,
+							units.get(i).getY() * scl - camY, null);
 			}
 		}
 

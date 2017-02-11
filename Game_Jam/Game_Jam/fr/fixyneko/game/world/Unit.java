@@ -1,12 +1,12 @@
 package fr.fixyneko.game.world;
 
-public class Units {
+public class Unit {
 
 	int attack, life;
 	int posX, posY;
 	int unitType;
 
-	public Units(int a, int l, int x, int y, int uT) {
+	public Unit(int a, int l, int x, int y, int uT) {
 		this.attack = a;
 		this.life = l;
 		this.posX = x;
