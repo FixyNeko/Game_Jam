@@ -6,7 +6,7 @@ import java.awt.image.BufferedImage;
 import java.util.Vector;
 
 @SuppressWarnings("serial")
-public class ScreenCanvas extends Canvas{
+public class ScreenCanvas extends Canvas {
 
 	private BufferedImage img;
 	private Vector<Drawable> drawables;
@@ -21,10 +21,9 @@ public class ScreenCanvas extends Canvas{
 		g.clearRect(0, 0, 3200, 3200);
 
 		if (!drawables.isEmpty())
-			for (Drawable drawable : drawables){
+			for (Drawable drawable : drawables)
 				drawable.draw(g);
-				System.out.println(drawable);
-			}
+
 		getGraphics().drawImage(img, 0, 0, null);
 	}
 
