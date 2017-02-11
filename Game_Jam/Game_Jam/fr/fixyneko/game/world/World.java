@@ -13,6 +13,7 @@ import javax.imageio.ImageIO;
 
 import fr.gagoi.game.core.Game;
 import fr.gagoi.game.graphics.Drawable;
+import fr.gagoi.game.utils.Player;
 
 public class World implements Drawable, MouseListener {
 
@@ -45,7 +46,7 @@ public class World implements Drawable, MouseListener {
 		init();
 		initSprites();
 
-		units.add(new Unit(10, 10, 5, 5, 0));// pop a unit
+		units.add(new Unit(10, 10, 5, 5, 0, new Player()));// pop a unit
 
 		Game.GAME.getDisplay().getCanvas().getDrawables().add(this);
 		Game.GAME.getDisplay().getCanvas().addMouseListener(this);
@@ -91,7 +92,8 @@ public class World implements Drawable, MouseListener {
 		}
 
 		try {
-			sprites[0 + casesNum] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/units/" + "pecore.png"));
+			sprites[0 + casesNum] = ImageIO
+					.read(getClass().getResourceAsStream("/resources/textures/units/" + "pecore.png"));
 			// sprites[1 + casesNum] =
 			// ImageIO.read(getClass().getResourceAsStream("/resources/textures/units/"
 			// + "case_void.png"));
@@ -117,11 +119,26 @@ public class World implements Drawable, MouseListener {
 		units.removeElement(u);
 	}
 
-	
+	public Vector<Unit> getUnits(Player p) {
+		Vector<Unit> u = new Vector<Unit>();
+		for (int i = 0; i < u.size(); i++) {
+			if(u.get(i).getPlayer() == p)
+				u.add(u.get(i));
+		}
+		return u;
+	}
+	public Vector<Case> getCase(Player p) {
+		Vector<Unit> u = new Vector<Unit>();
+		for (int i = 0; i < u.size(); i++) {
+			if(u.get(i).getPlayer() == p)
+				u.add(u.get(i));
+		}
+		return u;
+	}
+
 	int pointerX = 0;
 	int pointerY = 0;
-	
-	
+
 	@Override
 	public void draw(Graphics g) {
 		// TODO Auto-generated method stub
@@ -162,23 +179,26 @@ public class World implements Drawable, MouseListener {
 		}
 
 		g.drawImage(HUD, 0, 0, null);
-		
-		g.drawOval(pointerX-25, pointerY-25, 50, 50);
+
+		g.drawRect(pointerX * scl - camX + 313, pointerY * scl - camY, 50, 50);
 	}
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		
+
 		pointerX = e.getX();
 		pointerY = e.getY();
-		
-		//pointerX = 
-		
+
+		pointerX = pointerX * 1400 / Game.GAME.getDisplay().getWidth() + camX - 313;
+		pointerY = pointerY * 800 / Game.GAME.getDisplay().getHeight() + camY;
+
+		System.out.println(pointerX / 64);
+
 		for (int i = 0; i < units.size(); i++) {
 			int deltaX = units.get(i).getX() - e.getX();
 			int deltaY = units.get(i).getY() - e.getY();
-			if (deltaX > 0 && deltaX < 64 && deltaX < 64 && deltaY < 64) {
-				
+			if (deltaX > 0 && deltaX < scl && deltaY > 0 && deltaY < scl) {
+
 			}
 		}
 	}

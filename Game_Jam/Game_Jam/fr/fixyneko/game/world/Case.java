@@ -2,6 +2,7 @@ package fr.fixyneko.game.world;
 
 import java.util.Random;
 
+import fr.gagoi.game.utils.Player;
 import fr.gagoi.game.utils.ResourceList;
 
 public class Case {
@@ -13,7 +14,8 @@ public class Case {
 	public static final int TYPE_CITY = 4;
 
 	private ResourceList resource = null;
-	int resType;
+	private int resType;
+	private Player player = new Player(-1, 0, "NPC");
 
 	public Case(int resType) {
 		this.resType = resType;
@@ -55,6 +57,14 @@ public class Case {
 	
 	public int getType() {
 		return this.resType;
+	}
+	
+	public void setPlayer(Player p) {
+		this.player = p;
+	}
+	
+	public Player getPlayer() {
+		return this.player;
 	}
 
 //	public Image getImage() {
