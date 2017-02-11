@@ -10,6 +10,7 @@ import javax.imageio.ImageIO;
 public class Button implements Drawable{
 
 	private int x, y, width, height;
+	private BufferedImage texture;
 
 	public Button(int x, int y, int width, int height, String texture_name) {
 		this.x = x;
@@ -17,7 +18,7 @@ public class Button implements Drawable{
 		this.width = width;
 		this.height = height;
 		try {
-			BufferedImage img =ImageIO.read(getClass().getResourceAsStream("/resources/textures/" + texture_name));
+			texture =ImageIO.read(getClass().getResourceAsStream("/resources/textures/" + texture_name));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
