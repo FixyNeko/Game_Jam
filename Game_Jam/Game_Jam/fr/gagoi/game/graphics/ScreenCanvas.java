@@ -12,13 +12,13 @@ public class ScreenCanvas extends Canvas {
 	private Vector<Drawable> drawables;
 
 	public ScreenCanvas() {
-		img = new BufferedImage(800, 800, BufferedImage.TYPE_INT_RGB);
+		img = new BufferedImage(3200, 3200, BufferedImage.TYPE_INT_RGB);
 		drawables = new Vector<>();
 	}
 
 	public void render() {
 		Graphics g = img.getGraphics();
-		g.clearRect(0, 0, 800, 800);
+		g.clearRect(0, 0, 3200, 3200);
 
 		if (!drawables.isEmpty())
 			for (Drawable drawable : drawables)

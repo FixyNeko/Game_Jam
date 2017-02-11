@@ -6,12 +6,15 @@ public class Game implements Runnable {
 
 	public static Game GAME;
 
-	@SuppressWarnings("unused")
 	private final Display display;
 	private boolean isRunning = true;
 
 	public Game() {
 		this.display = new Display();
+	}
+	
+	public Display getDisplay(){
+		return display;
 	}
 
 	@Override
