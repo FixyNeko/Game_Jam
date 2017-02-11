@@ -16,6 +16,12 @@ import fr.gagoi.game.graphics.Drawable;
 
 public class World implements Drawable, MouseListener {
 
+	public static final int TUPE_GRASS = 0;
+	public static final int TYPE_WOOD = 1;
+	public static final int TYPE_FOOD = 2;
+	public static final int TYPE_ORE = 3;
+	public static final int TYPE_CITY = 4;
+
 	Case[][] cases;
 	int scl;
 
@@ -23,14 +29,16 @@ public class World implements Drawable, MouseListener {
 	double prevMouseX = 0, prevMouseY = 0;
 	int camX = 0, camY = 0;
 
-	int resources[] = { 10, 10, 10, 10 };
-	
+	int resources[] = { 50, 50, 50, 50 };
+
 	BufferedImage HUD;
+	BufferedImage[] sprites = new BufferedImage[5];
 
 	public World(int x, int y, int scl_) {
 		cases = new Case[x][y];
 		scl = scl_;
 		init();
+		initSprite();
 		Game.GAME.getDisplay().getCanvas().getDrawables().add(this);
 		Game.GAME.getDisplay().getCanvas().addMouseListener(this);
 	}
@@ -38,7 +46,7 @@ public class World implements Drawable, MouseListener {
 	void init() {
 		for (int x = 0; x < cases.length; x++) {
 			for (int y = 0; y < cases[x].length; y++) {
-				cases[x][y] = new Case(-1);
+				cases[x][y] = new Case(0);
 			}
 		} // make world all grass
 
@@ -52,15 +60,47 @@ public class World implements Drawable, MouseListener {
 					y = new Random().nextInt(cases[0].length - 1);
 				} while (cases[x][y] == null);
 
-				cases[x][y] = new Case(i);
+				cases[x][y] = new Case(i+1);
 			}
 		} // put ressources randomly in specified amounts on world (overwrite)
-		
+
 		try {
 			HUD = ImageIO.read(getClass().getResourceAsStream("/resources/textures/gui/HUD.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			HUD = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB);
+		}
+	}
+
+	void initSprite() {
+		for (int i = 0; i < sprites.length; i++) {
+			String path;
+			switch (i) {
+			case TYPE_WOOD:
+				path = "case_wood.png";
+				break;
+			case TYPE_FOOD:
+				path = "case_food.png";
+				break;
+			case TYPE_ORE:
+				path = "case_ore.png";
+				break;
+			case TYPE_CITY:
+				path = "case_city.png";
+				break;
+			default:
+				path = "case_void.png";
+			}
+
+			try {
+				sprites[i] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/world/" + path));
+			} catch (IOException e) {
+				sprites[i] = new BufferedImage(64, 64, BufferedImage.TYPE_INT_RGB);
+				Graphics g = sprites[i].getGraphics();
+				g.setColor(Color.RED);
+				g.fillRect(0, 0, 64, 64);
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -70,7 +110,7 @@ public class World implements Drawable, MouseListener {
 
 		double curMouseX = MouseInfo.getPointerInfo().getLocation().getX();
 		double curMouseY = MouseInfo.getPointerInfo().getLocation().getY();
-		
+
 		if (this.scroll) {
 			double deltX = curMouseX - prevMouseX;
 			double deltY = curMouseY - prevMouseY;
@@ -85,29 +125,29 @@ public class World implements Drawable, MouseListener {
 
 		for (int x = 0; x < cases.length; x++) {
 			for (int y = 0; y < cases[x].length; y++) {
-				g.drawImage(cases[x][y].getImage(), x * scl - camX + 313, y * scl - camY, null);
+				g.drawImage(sprites[cases[x][y].getType()], x * scl - camX + 313, y * scl - camY, null);
 				g.setColor(Color.BLACK);
-				g.drawRect(x * scl - camX + 313, y * scl - camY, scl, scl);
+				try {
+					g.drawRect(x * scl - camX + 313, y * scl - camY, scl, scl);
+				} catch (Exception e) {
+				}
 			}
 		}
-		
+
 		g.drawImage(HUD, 0, 0, null);
 	}
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		System.out.println("mouse click");
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		System.out.println("mouse press");
 		this.scroll = true;
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		System.out.println("mouse released");
 		this.scroll = false;
 	}
 

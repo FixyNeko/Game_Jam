@@ -29,7 +29,7 @@ public class Game implements Runnable {
 	@Override
 	public void run() {
 		// TODO : Mettre du tour par tour.
-		World world = new World(21, 15, 64);
+		World world = new World(50, 50, 64);
 		p1 = new Player(0, 0, "Player 1");
 		p2 = new Player(1, 0, "Player 2");
 		update();
