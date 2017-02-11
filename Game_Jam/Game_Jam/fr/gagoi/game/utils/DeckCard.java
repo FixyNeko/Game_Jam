@@ -1,9 +1,6 @@
 package fr.gagoi.game.utils;
 
-import java.awt.Graphics;
-
 import fr.gagoi.game.cards.Card;
-import fr.gagoi.game.core.Game;
 import fr.gagoi.game.graphics.Button;
 
 public class DeckCard extends Button {
@@ -13,8 +10,8 @@ public class DeckCard extends Button {
 	private Card card;
 
 	public DeckCard(int slot) {
-		super(pos[slot][0], pos[slot][1], 150, 210, "");
-		Game.GAME.getDisplay().getCanvas().getDrawables().add(this);
+		super(pos[slot][0], pos[slot][1], 150, 210);
+//		Game.GAME.getDisplay().getCanvas().getDrawables().add(this);
 	}
 
 	public void setCard(Card card) {
@@ -27,9 +24,9 @@ public class DeckCard extends Button {
 		setCard(null);
 	}
 	
-	@Override
-	public void draw(Graphics g) {
-		if(card!=null)
-			super.draw(g);
-	}
+//	@Override
+//	public void draw(Graphics g) {
+//		if(card!=null)
+//			super.draw(g);
+//	}
 }

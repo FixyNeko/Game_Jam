@@ -35,6 +35,17 @@ public class Button implements Drawable, MouseListener {
 		Game.GAME.getDisplay().getCanvas().addMouseListener(this);
 	}
 
+	public Button(int x, int y, int width, int height) {
+		this.x = x;
+		this.y = y;
+		this.width = width;
+		this.height = height;
+		texture = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+
+		Game.GAME.getDisplay().getCanvas().getDrawables().add(this);
+		Game.GAME.getDisplay().getCanvas().addMouseListener(this);
+	}
+
 	// A override pour ajouter action.
 	public void action() {
 

@@ -1,5 +1,7 @@
 package fr.gagoi.game.graphics;
 
+import java.awt.event.WindowListener;
+
 import javax.swing.JFrame;
 
 @SuppressWarnings("serial")
@@ -17,7 +19,6 @@ public class Display extends JFrame implements Runnable {
 		setTitle(TITLE);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setSize(1400, 800);
-		setResizable(false);
 		getContentPane().add(canvas);
 		setVisible(true);
 		t = new Thread(this);
@@ -27,28 +28,24 @@ public class Display extends JFrame implements Runnable {
 	@Override
 	public void run() {
 		long startTimeFPS = System.currentTimeMillis();
-		// System.currentTimeMillis();
-		// long lastTimeFrame = System.currentTimeMillis();
-		// long lastFrameTime = System.currentTimeMillis();
 
 		while (isRunning) {
+			canvas.render();
 
 			long renderBegin = System.currentTimeMillis();
-			canvas.render();
 			long renderEnd = System.currentTimeMillis();
-			
-
+			long deltaFPS = System.currentTimeMillis() - startTimeFPS;
 			long t = 1000 / 60 - (renderEnd - renderBegin);
+
 			if (t > 0)
 				try {
 					Thread.sleep(t);
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 
-			long deltaFPS = System.currentTimeMillis() - startTimeFPS;
 			fps++;
+
 			if (deltaFPS >= 1000) {
 				setTitle(TITLE + " | fps=" + fps);
 				startTimeFPS = System.currentTimeMillis();
