@@ -49,7 +49,6 @@ public class World implements Drawable, MouseListener {
 	@Override
 	public void draw(Graphics g) {
 		// TODO Auto-generated method stub
-		System.out.println("draw\n\n");
 		for (int x = 0; x < cases.length; x++) {
 			for (int y = 0; y < cases[x].length; y++) {
 				g.drawImage(cases[x][y].getImage(), x * scl, y * scl, null);
