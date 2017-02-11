@@ -15,12 +15,12 @@ public class Card_Paysan implements Card {
 
 	@Override
 	public String getImage() {
-		return "/cartes/lois/paysan.jpg";
+		return "/cartes/unites/paysan.jpg";
 	}
 
 	@Override
 	public void onUse() {
-		//AJOUTE UN TANK SUR LA MAP AVEC 1 D'ATTAQUE ET 1 DE VIE.
+		//AJOUTE UN PAYSAN SUR LA MAP AVEC 1 D'ATTAQUE ET 1 DE VIE.
 	}
 
 }

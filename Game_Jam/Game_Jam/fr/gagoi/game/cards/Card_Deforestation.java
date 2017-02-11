@@ -17,7 +17,7 @@ public class Card_Deforestation implements Card {
 
 	@Override
 	public String getImage() {
-		return "/cartes/lois/deforestation.jpg";
+		return "/cartes/ressources/deforestation.jpg";
 	}
 
 	@Override
