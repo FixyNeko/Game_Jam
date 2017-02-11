@@ -10,29 +10,37 @@ public class World implements Drawable {
 
 	Case[][] cases;
 	int scl;
-	int gameX = 800;
-	int gameY = 800;
+	// int gameX = 800;
+	// int gameY = 800;
 
-	int ressources[] = { 10, 10, 10, 10, 10 };
+	int resources[] = { 10, 10, 10, 10, 10 };
 
 	public World(int x, int y, int scl_) {
-		// cases = new Case[x][y];
+		cases = new Case[x][y];
 		scl = scl_;
 		Game.GAME.getDisplay().getCanvas().getDrawables().add(this);
 	}
 
 	void init() {
-		for (int i = 0; i < ressources.length; i++) {
-			int x;
-			int y;
-			
-			do {
-				x = new Random().nextInt(gameX - 1);
-				y = new Random().nextInt(gameY - 1);
-			} while (cases[x][y] == null);
-			
-			cases[x][y] = new Case(i);
-		}
+		for (int x = 0; x < cases.length; x++) {
+			for (int y = 0; y < cases[x].length; y++) {
+				cases[x][y] = new Case(-1);
+			}
+		} // make world all grass
+
+		for (int i = 0; i < resources.length; i++) {
+			for (int n = 0; n < resources[i]; n++) {
+				int x;
+				int y;
+
+				do {
+					x = new Random().nextInt(cases.length - 1);
+					y = new Random().nextInt(cases[0].length - 1);
+				} while (cases[x][y] == null);
+
+				cases[x][y] = new Case(i);
+			}
+		} // put ressources randomly in specified amounts on world (overwrite)
 	}
 
 	@Override
