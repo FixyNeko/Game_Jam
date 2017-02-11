@@ -32,7 +32,7 @@ public class DeckCard extends Button {
 	
 	@Override
 	public void draw(Graphics g) {
-		if(card!=null)
-			super.draw(g);
+//		if(card!=null)
+//			super.draw(g);
 	}
 }

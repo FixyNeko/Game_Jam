@@ -19,13 +19,18 @@ public class ScreenCanvas extends Canvas {
 	}
 
 	public void render() {
-		Graphics g = img.getGraphics();
-		g.clearRect(0, 0, 1400, 800);
+		try {
+			Graphics g = img.getGraphics();
+			g.clearRect(0, 0, 1400, 800);
 
-		if (!drawables.isEmpty())
-			for (Drawable drawable : drawables)
-				drawable.draw(g);
-		getGraphics().drawImage(img.getScaledInstance(Game.GAME.getDisplay().getWidth(), Game.GAME.getDisplay().getHeight(), BufferedImage.SCALE_DEFAULT), 0, 0, null);
+			if (!drawables.isEmpty())
+				for (Drawable drawable : drawables)
+					drawable.draw(g);
+			getGraphics().drawImage(img.getScaledInstance(Game.GAME.getDisplay().getWidth(),
+					Game.GAME.getDisplay().getHeight(), BufferedImage.SCALE_DEFAULT), 0, 0, null);
+		} catch (Exception e) {
+
+		}
 	}
 
 	public Vector<Drawable> getDrawables() {

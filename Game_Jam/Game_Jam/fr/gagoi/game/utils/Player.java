@@ -16,8 +16,8 @@ public class Player {
 	public Player(int playerId, int character, String name) {
 		this.id = playerId;
 		this.name = name;
-		this.deck = new DeckCard[] { new DeckCard(0), new DeckCard(1), new DeckCard(2), new DeckCard(3),
-				new DeckCard(4), new DeckCard(5) };
+	//	this.deck = new DeckCard[] { new DeckCard(0), new DeckCard(1), new DeckCard(2), new DeckCard(3),
+	//			new DeckCard(4), new DeckCard(5) };
 		this.resources = new ResourceList();
 		for (int i = 0; i < base_resources[character].length; i++)
 			this.resources.setResource(i, base_resources[character][i]);
