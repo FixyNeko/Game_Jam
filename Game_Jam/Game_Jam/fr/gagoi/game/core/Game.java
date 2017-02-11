@@ -45,6 +45,7 @@ public class Game implements Runnable {
 	}
 
 	public void update() {
+		getPlayer(playersTurn).setPlaying(true);
 		for (int i = 0; i < deck.length; i++) {
 			if (deck[i] != null) {
 				getPlayer(playersTurn).addCard(deck[i]);
