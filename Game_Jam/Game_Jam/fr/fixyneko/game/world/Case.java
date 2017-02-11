@@ -41,8 +41,6 @@ public class Case {
 			break;
 		}
 
-		System.out.println(path);
-		
 		try {
 			img = ImageIO.read(getClass().getResourceAsStream("/resources/textures/world/" + path));
 		} catch (IOException e) {
