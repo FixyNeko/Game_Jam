@@ -11,9 +11,9 @@ public class World implements Drawable {
 	int gameX = 800;
 	int gameY = 800;
 
-	public World(int x, int y) {
+	public World(int x, int y, int scl_) {
 		cases = new Case[x][y];
-		scl = Math.min(gameX/x, gameY/y);
+		scl = scl_;
 	}
 
 	@Override
