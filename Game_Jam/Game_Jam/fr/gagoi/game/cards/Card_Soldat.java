@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 
 import fr.fixyneko.game.world.Unit;
+import fr.gagoi.game.core.Game;
 
 public class Card_Soldat implements Card {
 
@@ -22,7 +23,7 @@ public class Card_Soldat implements Card {
 
 	@Override
 	public void onUse() {
-		new Unit(2, 2, 5, 5, 1);
+		Game.GAME.getWorld().addUnit(new Unit(2, 2, 5, 5, 1, Game.GAME.getPlayer(Game.GAME.getPlayersTurn())));
 	}
 
 }

@@ -1,10 +1,9 @@
 package fr.gagoi.game.cards;
 
 import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.MouseInfo;
 
 import fr.fixyneko.game.world.Unit;
+import fr.gagoi.game.core.Game;
 
 public class Card_Paysan implements Card {
 
@@ -23,7 +22,7 @@ public class Card_Paysan implements Card {
 
 	@Override
 	public void onUse() {
-		new Unit(1, 1, 5, 5, 0);
+		Game.GAME.getWorld().addUnit(new Unit(1, 1, 5, 5, 0, Game.GAME.getPlayer(Game.GAME.getPlayersTurn())));
 	}
 
 }
