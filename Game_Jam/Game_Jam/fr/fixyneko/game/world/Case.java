@@ -1,13 +1,7 @@
 package fr.fixyneko.game.world;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.util.Random;
-
-import javax.imageio.ImageIO;
 
 import fr.gagoi.game.utils.ResourceList;
 
