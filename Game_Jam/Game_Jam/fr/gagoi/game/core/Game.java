@@ -23,13 +23,13 @@ public class Game implements Runnable {
 	@Override
 	public void run() {
 		// TODO : Mettre du tour par tour.
+		World world = new World(4,4,64);
 		while (isRunning) {
 			update();
 		}
 	}
 
 	public void update() {
-		new World(4,4,64);
 	}
 
 	public int getXOffset() {
