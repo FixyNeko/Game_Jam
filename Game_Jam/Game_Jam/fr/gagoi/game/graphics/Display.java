@@ -35,7 +35,9 @@ public class Display extends JFrame implements Runnable {
 				canvas.render();
 				startTime = System.currentTimeMillis();
 				try {
-					Thread.sleep(100 / 6 - delta);
+					long t = 100 / 6 - delta;
+					if (t > 0)
+						Thread.sleep(100 / 6 - delta);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}

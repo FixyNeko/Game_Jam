@@ -1,5 +1,6 @@
 package fr.fixyneko.game.world;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -15,7 +16,7 @@ public class World implements Drawable, MouseListener {
 	// int gameX = 800;
 	// int gameY = 800;
 
-	int resources[] = { 10, 10, 10, 10, 10 };
+	int resources[] = { 0, 0, 0, 0, 0 };
 
 	public World(int x, int y, int scl_) {
 		cases = new Case[x][y];
@@ -52,6 +53,7 @@ public class World implements Drawable, MouseListener {
 		for (int x = 0; x < cases.length; x++) {
 			for (int y = 0; y < cases[x].length; y++) {
 				g.drawImage(cases[x][y].getImage(), x * scl, y * scl, null);
+				g.setColor(Color.BLACK);
 				g.drawRect(x * scl, y * scl, scl, scl);
 			}
 		}
