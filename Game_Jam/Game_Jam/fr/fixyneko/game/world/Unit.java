@@ -13,13 +13,13 @@ public class Unit {
 	int unitType;
 	Player player;
 
-	public Unit(int a, int l, int x, int y, int uT, Player p) {
-		this.attack = a;
-		this.life = l;
+	public Unit(int attack, int life, int x, int y, int unitType, Player player) {
+		this.attack = attack;
+		this.life = life;
 		this.posX = x;
 		this.posY = y;
-		this.unitType = uT;
-		this.player = p;
+		this.unitType = unitType;
+		this.player = player;
 	}
 	
 	public void update(){
