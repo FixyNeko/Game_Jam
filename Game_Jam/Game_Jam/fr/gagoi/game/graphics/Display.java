@@ -48,4 +48,8 @@ public class Display extends JFrame implements Runnable {
 			}
 		}
 	}
+
+	public ScreenCanvas getCanvas() {
+		return canvas;
+	}
 }

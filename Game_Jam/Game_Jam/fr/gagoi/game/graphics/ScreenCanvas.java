@@ -21,10 +21,15 @@ public class ScreenCanvas extends Canvas {
 		Graphics g = img.getGraphics();
 		g.clearRect(0, 0, 800, 800);
 
-		if(!drawables.isEmpty())
-			for (Drawable drawable : drawables) 
+		if (!drawables.isEmpty())
+			for (Drawable drawable : drawables)
 				drawable.draw(g);
-			
+
 		getGraphics().drawImage(img, 0, 0, null);
 	}
+
+	public Vector<Drawable> getDrawables() {
+		return drawables;
+	}
+
 }
