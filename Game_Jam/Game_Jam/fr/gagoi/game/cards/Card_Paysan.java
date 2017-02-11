@@ -2,6 +2,9 @@ package fr.gagoi.game.cards;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.MouseInfo;
+
+import fr.fixyneko.game.world.Unit;
 
 public class Card_Paysan implements Card {
 
@@ -20,7 +23,7 @@ public class Card_Paysan implements Card {
 
 	@Override
 	public void onUse() {
-		//AJOUTE UN PAYSAN SUR LA MAP AVEC 1 D'ATTAQUE ET 1 DE VIE.
+		new Unit(1, 1, 5, 5, 0);
 	}
 
 }
