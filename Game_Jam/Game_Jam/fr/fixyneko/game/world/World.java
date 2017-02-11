@@ -71,8 +71,6 @@ public class World implements Drawable, MouseListener {
 		double curMouseX = MouseInfo.getPointerInfo().getLocation().getX();
 		double curMouseY = MouseInfo.getPointerInfo().getLocation().getY();
 		
-		//System.out.println(this.scroll);
-
 		if (this.scroll) {
 			double deltX = curMouseX - prevMouseX;
 			double deltY = curMouseY - prevMouseY;
