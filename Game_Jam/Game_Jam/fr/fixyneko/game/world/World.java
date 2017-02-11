@@ -11,8 +11,6 @@ import java.util.Random;
 
 import javax.imageio.ImageIO;
 
-import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
-
 import fr.gagoi.game.core.Game;
 import fr.gagoi.game.graphics.Drawable;
 
@@ -78,8 +76,8 @@ public class World implements Drawable, MouseListener {
 		if (this.scroll) {
 			double deltX = curMouseX - prevMouseX;
 			double deltY = curMouseY - prevMouseY;
-			camX += deltX;
-			camY += deltY;
+			camX -= deltX;
+			camY -= deltY;
 			camX = Math.max(0, Math.min(camX, cases.length * scl - 800));
 			camY = Math.max(0, Math.min(camY, cases[0].length * scl - 750));
 		}
