@@ -3,6 +3,10 @@ package fr.fixyneko.game.world;
 import fr.gagoi.game.utils.Player;
 
 public class Unit {
+	
+	public static final int TYPE_PAYSAN = 0;
+	public static final int TYPE_SOLDAT = 1;
+	public static final int TYPE_TANK = 2;
 
 	int attack, life;
 	int posX, posY;
