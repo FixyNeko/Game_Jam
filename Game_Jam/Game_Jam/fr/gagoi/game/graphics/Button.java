@@ -1,16 +1,27 @@
 package fr.gagoi.game.graphics;
 
+import java.awt.Graphics;
 import java.awt.geom.Point2D;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
-public class Button {
+import javax.imageio.ImageIO;
+
+public class Button implements Drawable{
 
 	private int x, y, width, height;
+	private BufferedImage texture;
 
-	public Button(int x, int y, int width, int height) {
+	public Button(int x, int y, int width, int height, String texture_name) {
 		this.x = x;
 		this.y = y;
 		this.width = width;
 		this.height = height;
+		try {
+			texture =ImageIO.read(getClass().getResourceAsStream("/resources/textures/" + texture_name));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public boolean contain(Point2D p) {
@@ -18,6 +29,10 @@ public class Button {
 	}
 
 	public void onClick() {
-
+		
+	}
+	
+	@Override
+	public void draw(Graphics g) {
 	}
 }
