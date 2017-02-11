@@ -1,5 +1,6 @@
 package fr.gagoi.game.graphics;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
@@ -24,6 +25,10 @@ public class Button implements Drawable, MouseListener {
 		try {
 			texture = ImageIO.read(getClass().getResourceAsStream("/resources/textures/" + texture_name));
 		} catch (IOException e) {
+			texture = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+			Graphics g = texture.getGraphics();
+			g.setColor(Color.RED);
+			g.fillRect(0, 0, width, height);
 			e.printStackTrace();
 		}
 		Game.GAME.getDisplay().getCanvas().getDrawables().add(this);
@@ -43,9 +48,8 @@ public class Button implements Drawable, MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		Point p = e.getPoint();
-		if ((x <= p.getX() && x + width >= p.getX() && y <= p.getY() && y + height <= p.getY())) {
+		if ((x <= p.getX() && x + width >= p.getX() && y <= p.getY() && y + height <= p.getY()))
 			action();
-		}
 	}
 
 	@Override
