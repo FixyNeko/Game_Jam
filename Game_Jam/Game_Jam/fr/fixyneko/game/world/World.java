@@ -127,10 +127,6 @@ public class World implements Drawable, MouseListener {
 			for (int y = 0; y < cases[x].length; y++) {
 				if (((x+1) * scl - camX > 0) && (x * scl - camX) < 774 && ((y+1) * scl - camY) > 0 && (y * scl - camY) < 770) {
 					g.drawImage(sprites[cases[x][y].getType()], x * scl - camX + 313, y * scl - camY, null);
-					g.setColor(Color.BLACK);
-					try {
-						g.drawRect(x * scl - camX + 313, y * scl - camY, scl, scl);
-					} catch (Exception e) {}
 				}
 			}
 		}
