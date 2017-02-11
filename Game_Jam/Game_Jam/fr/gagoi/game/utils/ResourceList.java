@@ -27,4 +27,31 @@ public class ResourceList {
 		}
 	}
 
+	public void setResource(int type, int val) {
+		switch (type) {
+		case TYPE_WOOD:
+			this.wood = val;
+			return;
+		case TYPE_FOOD:
+			this.food = val;
+			return;
+		case TYPE_ORE:
+			this.ore = val;
+			return;
+		case TYPE_GOLD:
+			this.gold = val;
+			return;
+		case TYPE_POPULARITY:
+			this.popularity = val;
+			return;
+		}
+	}
+
+	public void addResource(int type, int val) {
+		setResource(type, getResource(type) + val);
+	}
+
+	public void removeResource(int type, int val) {
+		setResource(type, getResource(type) - val);
+	}
 }
