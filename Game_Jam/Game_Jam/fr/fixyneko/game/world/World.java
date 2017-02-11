@@ -60,7 +60,7 @@ public class World implements Drawable, MouseListener {
 					y = new Random().nextInt(cases[0].length - 1);
 				} while (cases[x][y] == null);
 
-				cases[x][y] = new Case(i+1);
+				cases[x][y] = new Case(i + 1);
 			}
 		} // put ressources randomly in specified amounts on world (overwrite)
 
@@ -125,11 +125,13 @@ public class World implements Drawable, MouseListener {
 
 		for (int x = 0; x < cases.length; x++) {
 			for (int y = 0; y < cases[x].length; y++) {
-				g.drawImage(sprites[cases[x][y].getType()], x * scl - camX + 313, y * scl - camY, null);
-				g.setColor(Color.BLACK);
-				try {
-					g.drawRect(x * scl - camX + 313, y * scl - camY, scl, scl);
-				} catch (Exception e) {
+				if (((x+1) * scl - camX > 0) && (x * scl - camX) < 774 && ((y+1) * scl - camY) > 0 && (y * scl - camY) < 770) {
+					g.drawImage(sprites[cases[x][y].getType()], x * scl - camX + 313, y * scl - camY, null);
+					g.setColor(Color.BLACK);
+					try {
+						g.drawRect(x * scl - camX + 313, y * scl - camY, scl, scl);
+					} catch (Exception e) {
+					}
 				}
 			}
 		}
