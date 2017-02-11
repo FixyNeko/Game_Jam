@@ -191,12 +191,8 @@ public class World implements Drawable, MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-
-		pointerX = e.getX();
-		pointerY = e.getY();
-
-		pointerX = pointerX * 1400 / Game.GAME.getDisplay().getWidth() + camX - 313;
-		pointerY = pointerY * 800 / Game.GAME.getDisplay().getHeight() + camY;
+		pointerX = e.getX() * 1400 / Game.GAME.getDisplay().getWidth() + camX - 313;
+		pointerY = e.getY() * 800 / Game.GAME.getDisplay().getHeight() + camY;
 		
 		pointerX /= 64;
 		pointerY /= 64;
