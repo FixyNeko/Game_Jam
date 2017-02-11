@@ -201,8 +201,6 @@ public class World implements Drawable, MouseListener {
 		pointerX /= 64;
 		pointerY /= 64;
 
-		System.out.println(pointerX / 64);
-
 		for (int i = 0; i < units.size(); i++) {
 			int deltaX = units.get(i).getX() - e.getX();
 			int deltaY = units.get(i).getY() - e.getY();
