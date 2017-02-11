@@ -1,5 +1,7 @@
 package fr.gagoi.game.utils;
 
+import java.awt.Graphics;
+
 import fr.gagoi.game.cards.Card;
 import fr.gagoi.game.graphics.Button;
 
@@ -23,10 +25,14 @@ public class DeckCard extends Button {
 		card.onUse();
 		setCard(null);
 	}
+
+	public Card getCard() {
+		return card;
+	}
 	
-//	@Override
-//	public void draw(Graphics g) {
-//		if(card!=null)
-//			super.draw(g);
-//	}
+	@Override
+	public void draw(Graphics g) {
+		if(card!=null)
+			super.draw(g);
+	}
 }

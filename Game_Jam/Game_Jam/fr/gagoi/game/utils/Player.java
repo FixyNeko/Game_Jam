@@ -1,13 +1,15 @@
 package fr.gagoi.game.utils;
 
+import fr.gagoi.game.cards.Card;
+
 public class Player {
 
 	public static int CHARACTER_RICH = 0;
-
 	public static int[][] base_resources = { { 100, 100, 100, 100, 100 }, { 50, 50, 50, 50, 50 }, };
 
 	private String name;
 	private int id;
+	private boolean isPlaying = true;
 	private DeckCard[] deck;
 	private ResourceList resources;
 
@@ -27,6 +29,29 @@ public class Player {
 
 	public String getName() {
 		return name;
+	}
+
+	public boolean addCard(Card c) {
+		for (int i = 0; i < deck.length; i++) {
+			if (deck[i].getCard() == null) {
+				deck[i].setCard(c);
+				c = null;
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public boolean isPlaying() {
+		return isPlaying;
+	}
+
+	public void setPlaying(boolean isPlaying) {
+		this.isPlaying = isPlaying;
 	}
 
 }
