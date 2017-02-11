@@ -1,6 +1,5 @@
 package fr.fixyneko.game.world;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.MouseInfo;
 import java.awt.event.MouseEvent;
@@ -31,9 +30,12 @@ public class World implements Drawable, MouseListener {
 	int camX = 0, camY = 0;
 
 	int resources[] = { 50, 50, 50, 50 };
+	
+	int casesNum = 5;
+	int unitsNum = 5;
 
 	BufferedImage HUD;
-	BufferedImage[] sprites = new BufferedImage[5 + 5];
+	BufferedImage[] sprites = new BufferedImage[casesNum + unitsNum];
 
 	public World(int x, int y, int scl_) {
 		cases = new Case[x][y];
@@ -74,22 +76,24 @@ public class World implements Drawable, MouseListener {
 	}
 
 	void initSprites() {
-		try{
-		sprites[0] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/world/" + "case_wood.png"));
-		sprites[1] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/world/" + "case_food.png"));
-		sprites[2] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/world/" + "case_ore.png"));
-		sprites[3] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/world/" + "case_city.png"));
-		sprites[4] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/world/" + "case_void.png"));
-		} catch (Exception e){}
-		
-		try{
-		sprites[4] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/units/" + "case_void.png"));
-		sprites[5] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/units/" + "case_void.png"));
-		sprites[6] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/units/" + "case_void.png"));
-		sprites[7] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/units/" + "case_void.png"));
-		sprites[8] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/units/" + "case_void.png"));
-		} catch (Exception e) {}
-		
+		try {
+			sprites[0] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/world/" + "case_wood.png"));
+			sprites[1] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/world/" + "case_food.png"));
+			sprites[2] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/world/" + "case_ore.png"));
+			sprites[3] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/world/" + "case_city.png"));
+			sprites[4] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/world/" + "case_void.png"));
+		} catch (Exception e) {
+		}
+
+		try {
+			sprites[4] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/units/" + "case_void.png"));
+			sprites[5] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/units/" + "case_void.png"));
+			sprites[6] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/units/" + "case_void.png"));
+			sprites[7] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/units/" + "case_void.png"));
+			sprites[8] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/units/" + "case_void.png"));
+		} catch (Exception e) {
+		}
+
 	}
 
 	@Override
@@ -113,9 +117,19 @@ public class World implements Drawable, MouseListener {
 
 		for (int x = 0; x < cases.length; x++) {
 			for (int y = 0; y < cases[x].length; y++) {
-				if (((x+1) * scl - camX > 0) && (x * scl - camX) < 774 && ((y+1) * scl - camY) > 0 && (y * scl - camY) < 770) {
+				if (((x + 1) * scl - camX > 0) && (x * scl - camX) < 774 && ((y + 1) * scl - camY) > 0
+						&& (y * scl - camY) < 770) {
 					g.drawImage(sprites[cases[x][y].getType()], x * scl - camX + 313, y * scl - camY, null);
 				}
+			}
+		}
+
+		for (int i = 0; i < units.length; i++) {
+			int x = units[i].getX();
+			int y = units[i].getY();
+			if (((x + 1) * scl - camX > 0) && (x * scl - camX) < 774 && ((y + 1) * scl - camY) > 0
+					&& (y * scl - camY) < 770) {
+				g.drawImage(sprites[units[i].getType() + casesNum], units[i].getX() * scl - camX + 313, units[i].getY() * scl - camY, null);
 			}
 		}
 
