@@ -9,11 +9,13 @@ public class Game implements Runnable {
 	private final Display display;
 	private boolean isRunning = true;
 
+	private int xOffset, yOffset;
+
 	public Game() {
 		this.display = new Display();
 	}
-	
-	public Display getDisplay(){
+
+	public Display getDisplay() {
 		return display;
 	}
 
@@ -28,7 +30,23 @@ public class Game implements Runnable {
 	public void update() {
 
 	}
-	
+
+	public int getXOffset() {
+		return this.xOffset;
+	}
+
+	public int getYOffset() {
+		return this.yOffset;
+	}
+
+	public void setXOffset(int x) {
+		this.xOffset = x;
+	}
+
+	public void setYOffset(int y) {
+		this.yOffset = y;
+	}
+
 	public static void main(String args[]) {
 		GAME = new Game();
 	}

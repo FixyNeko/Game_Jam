@@ -6,7 +6,7 @@ import java.awt.image.BufferedImage;
 import java.util.Vector;
 
 @SuppressWarnings("serial")
-public class ScreenCanvas extends Canvas {
+public class ScreenCanvas extends Canvas{
 
 	private BufferedImage img;
 	private Vector<Drawable> drawables;
@@ -30,5 +30,4 @@ public class ScreenCanvas extends Canvas {
 	public Vector<Drawable> getDrawables() {
 		return drawables;
 	}
-
 }

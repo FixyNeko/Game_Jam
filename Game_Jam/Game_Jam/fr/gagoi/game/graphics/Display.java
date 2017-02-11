@@ -16,7 +16,7 @@ public class Display extends JFrame implements Runnable {
 		canvas = new ScreenCanvas();
 		setTitle(TITLE);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setSize(800, 800);
+		setSize(1400, 800);
 		setResizable(false);
 		getContentPane().add(canvas);
 		setVisible(true);

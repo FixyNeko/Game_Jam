@@ -1,13 +1,17 @@
 package fr.gagoi.game.graphics;
 
 import java.awt.Graphics;
-import java.awt.geom.Point2D;
+import java.awt.Point;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-public class Button implements Drawable{
+import fr.gagoi.game.core.Game;
+
+public class Button implements Drawable, MouseListener {
 
 	private int x, y, width, height;
 	private BufferedImage texture;
@@ -18,21 +22,45 @@ public class Button implements Drawable{
 		this.width = width;
 		this.height = height;
 		try {
-			texture =ImageIO.read(getClass().getResourceAsStream("/resources/textures/" + texture_name));
+			texture = ImageIO.read(getClass().getResourceAsStream("/resources/textures/" + texture_name));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		Game.GAME.getDisplay().getCanvas().getDrawables().add(this);
+		Game.GAME.getDisplay().getCanvas().addMouseListener(this);
 	}
 
-	public boolean contain(Point2D p) {
-		return (x <= p.getX() && x + width >= p.getX() && y <= p.getY() && y + height <= p.getY());
+	// A override pour ajouter action.
+	public void action() {
+
 	}
 
-	public void onClick() {
-		
-	}
-	
 	@Override
 	public void draw(Graphics g) {
+		g.drawImage(texture, x, y, null);
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		Point p = e.getPoint();
+		if ((x <= p.getX() && x + width >= p.getX() && y <= p.getY() && y + height <= p.getY())) {
+			action();
+		}
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
 	}
 }
