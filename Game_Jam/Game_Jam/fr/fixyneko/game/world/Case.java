@@ -24,10 +24,27 @@ public class Case {
 		this.resource = new ResourceList();
 		this.resource.setResource(resType, new Random().nextInt(11) * 50 + 800);
 
-		
-		
+		String path = "grass.png";
+		switch (resType) {
+		case TYPE_WOOD:
+			path = "wood.png";
+			return;
+		case TYPE_FOOD:
+			path = "food.png";
+			return;
+		case TYPE_ORE:
+			path = "ore.png";
+			return;
+		case TYPE_GOLD:
+			path = "gold.png";
+			return;
+		case TYPE_POPULARITY:
+			path = "popularity.png";
+			return;
+		}
+
 		try {
-			img = ImageIO.read(getClass().getResourceAsStream("/resources/textures/"));
+			img = ImageIO.read(getClass().getResourceAsStream("/resources/textures/" + path));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
