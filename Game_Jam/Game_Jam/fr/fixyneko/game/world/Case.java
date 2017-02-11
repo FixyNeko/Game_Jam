@@ -6,7 +6,7 @@ import fr.gagoi.game.utils.ResourceList;
 
 public class Case {
 
-	public static final int TUPE_GRASS = 0;
+	public static final int TYPE_GRASS = 0;
 	public static final int TYPE_WOOD = 1;
 	public static final int TYPE_FOOD = 2;
 	public static final int TYPE_ORE = 3;

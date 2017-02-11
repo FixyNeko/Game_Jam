@@ -1,7 +1,5 @@
 package fr.gagoi.game.graphics;
 
-import java.awt.event.WindowListener;
-
 import javax.swing.JFrame;
 
 @SuppressWarnings("serial")
