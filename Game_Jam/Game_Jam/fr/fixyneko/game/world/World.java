@@ -52,7 +52,7 @@ public class World implements Drawable, MouseListener {
 		Game.GAME.getDisplay().getCanvas().addMouseListener(this);
 	}
 
-	void init() {
+	private void init() {
 		for (int x = 0; x < cases.length; x++) {
 			for (int y = 0; y < cases[x].length; y++) {
 				cases[x][y] = new Case(0);
@@ -80,7 +80,7 @@ public class World implements Drawable, MouseListener {
 		}
 	}
 
-	void initSprites() {
+	private void initSprites() {
 		try {
 			sprites[1] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/world/" + "case_wood.png"));
 			sprites[2] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/world/" + "case_food.png"));
@@ -110,11 +110,11 @@ public class World implements Drawable, MouseListener {
 
 	}
 
-	void addUnit(Unit u) {
+	public void addUnit(Unit u) {
 		units.add(u);
 	}
 
-	void removeUnit(Unit u) {
+	public void removeUnit(Unit u) {
 		units.removeElement(u);
 	}
 
