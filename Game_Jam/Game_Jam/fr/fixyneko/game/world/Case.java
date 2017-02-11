@@ -24,6 +24,8 @@ public class Case {
 		this.resource = new ResourceList();
 		this.resource.setResource(resType, new Random().nextInt(11) * 50 + 800);
 
+		
+		
 		try {
 			img = ImageIO.read(getClass().getResourceAsStream("/resources/textures/"));
 		} catch (IOException e) {
