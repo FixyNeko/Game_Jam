@@ -1,7 +1,9 @@
 package fr.fixyneko.game.world;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.MouseInfo;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -143,7 +145,8 @@ public class World implements Drawable, MouseListener {
 	}
 
 	@Override
-	public void draw(Graphics g) {
+	public void draw(Graphics g1) {
+		Graphics2D g = (Graphics2D) g1;
 		double curMouseX = MouseInfo.getPointerInfo().getLocation().getX();
 		double curMouseY = MouseInfo.getPointerInfo().getLocation().getY();
 
@@ -182,6 +185,7 @@ public class World implements Drawable, MouseListener {
 		g.drawImage(HUD, 0, 0, null);
 
 		g.setColor(Color.BLACK);
+		g.setStroke(new BasicStroke(3F));
 		g.drawRect(pointerX * scl - camX + 313, pointerY * scl - camY, scl, scl);
 	}
 
