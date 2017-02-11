@@ -1,14 +1,26 @@
 package fr.gagoi.game.cards;
 
-import fr.gagoi.game.graphics.Button;
+import java.awt.Graphics;
+import java.awt.Image;
 
-public class Card_Paysan extends Card{
-	
-	Button b;
-	
+public class Card_Paysan implements Card {
+
 	public Card_Paysan() {
-		b = new Button(50, 50, 150, 210, "/cartes/paysan.png");
 	}
 	
+	@Override
+	public void draw(Graphics g) {
+		
+	}
+
+	@Override
+	public Image getImage() {
+		return null;
+	}
+
+	@Override
+	public void onUse() {
+		
+	}
 
 }
