@@ -62,4 +62,10 @@ public class Game implements Runnable {
 	public int getPlayersTurn() {
 		return playersTurn;
 	}
+
+	public Player getPlayer(int id) {
+		if (id == 0)
+			return p1;
+		return p2;
+	}
 }
