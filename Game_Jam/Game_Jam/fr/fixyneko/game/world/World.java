@@ -16,7 +16,7 @@ public class World implements Drawable, MouseListener {
 	// int gameX = 800;
 	// int gameY = 800;
 
-	int resources[] = { 0, 0, 0, 0, 0 };
+	int resources[] = { 2, 50, 2, 2 };
 
 	public World(int x, int y, int scl_) {
 		cases = new Case[x][y];

@@ -1,5 +1,7 @@
 package fr.fixyneko.game.world;
 
+import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -14,8 +16,7 @@ public class Case {
 	public static final int TYPE_WOOD = 0;
 	public static final int TYPE_FOOD = 1;
 	public static final int TYPE_ORE = 2;
-	public static final int TYPE_GOLD = 3;
-	public static final int TYPE_CITY = 4;
+	public static final int TYPE_CITY = 3;
 
 	private ResourceList resource = null;
 	private BufferedImage img;
@@ -28,29 +29,31 @@ public class Case {
 		switch (resType) {
 		case TYPE_WOOD:
 			path = "case_wood.png";
-			return;
+			break;
 		case TYPE_FOOD:
 			path = "case_food.png";
-			return;
+			break;
 		case TYPE_ORE:
 			path = "case_ore.png";
-			return;
-		case TYPE_GOLD:
-			path = "case_gold.png";
-			return;
+			break;
 		case TYPE_CITY:
 			path = "case_city.png";
-			return;
+			break;
 		}
 
+		System.out.println(path);
+		
 		try {
 			img = ImageIO.read(getClass().getResourceAsStream("/resources/textures/world/" + path));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			img = new BufferedImage(64, 64, BufferedImage.TYPE_INT_RGB);
+			Graphics g = img.getGraphics();
+			g.setColor(Color.RED);
+			g.fillRect(0, 0, 64, 64);
 			e.printStackTrace();
 		}
 	}
-	
+
 	public ResourceList getType() {
 		return this.resource;
 	}
