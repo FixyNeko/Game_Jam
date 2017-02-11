@@ -19,6 +19,10 @@ public class Player {
 		for (int i = 0; i < base_resources[character].length; i++)
 			this.resources.setResource(i, base_resources[character][i]);
 	}
+	
+	public ResourceList getResourceList(){
+		return resources;
+	}
 
 	public String getName() {
 		return name;
