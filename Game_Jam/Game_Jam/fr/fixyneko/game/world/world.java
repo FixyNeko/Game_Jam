@@ -1,4 +1,4 @@
-package fr.fixyneko.world;
+package fr.fixyneko.game.world;
 
 public class world {
 
