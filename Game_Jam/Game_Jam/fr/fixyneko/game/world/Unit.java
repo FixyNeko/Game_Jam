@@ -22,7 +22,7 @@ public class Unit {
 		this.player = p;
 	}
 	
-	void update(){
+	public void update(){
 	}
 
 	public int getType() {

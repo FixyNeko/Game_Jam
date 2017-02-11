@@ -46,7 +46,7 @@ public class World implements Drawable, MouseListener {
 		init();
 		initSprites();
 
-		units.add(new Unit(10, 10, 5, 5, 0, new Player()));// pop a unit
+		// units.add(new Unit(10, 10, 5, 5, 0, new Player()));// pop a unit
 
 		Game.GAME.getDisplay().getCanvas().getDrawables().add(this);
 		Game.GAME.getDisplay().getCanvas().addMouseListener(this);
@@ -76,7 +76,6 @@ public class World implements Drawable, MouseListener {
 		try {
 			HUD = ImageIO.read(getClass().getResourceAsStream("/resources/textures/gui/HUD.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			HUD = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB);
 		}
 	}
@@ -144,7 +143,6 @@ public class World implements Drawable, MouseListener {
 
 	@Override
 	public void draw(Graphics g) {
-		// TODO Auto-generated method stub
 
 		double curMouseX = MouseInfo.getPointerInfo().getLocation().getX();
 		double curMouseY = MouseInfo.getPointerInfo().getLocation().getY();
@@ -218,14 +216,11 @@ public class World implements Drawable, MouseListener {
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
 
 	}
-
 }
