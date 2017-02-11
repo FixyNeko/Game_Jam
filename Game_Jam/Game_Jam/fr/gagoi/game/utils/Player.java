@@ -1,6 +1,7 @@
 package fr.gagoi.game.utils;
 
 import fr.gagoi.game.cards.Card;
+import fr.gagoi.game.graphics.Button;
 
 public class Player {
 
@@ -13,6 +14,7 @@ public class Player {
 	private DeckCard[] deck;
 	private CardSlot slot;
 	private ResourceList resources;
+	private Button end;
 
 	public Player(int playerId, int character, String name) {
 		this.id = playerId;
@@ -24,6 +26,12 @@ public class Player {
 		this.resources = new ResourceList();
 		for (int i = 0; i < base_resources[character].length; i++)
 			this.resources.setResource(i, base_resources[character][i]);
+		end = new Button(1116, 695, 255, 90){
+			@Override
+			public void action() {
+				setPlaying(false);
+			}
+		};
 	}
 
 	public ResourceList getResourceList() {
