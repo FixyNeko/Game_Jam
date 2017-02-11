@@ -1,12 +1,14 @@
 package fr.fixyneko.game.world;
 
 import java.awt.Graphics;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.Random;
 
 import fr.gagoi.game.core.Game;
 import fr.gagoi.game.graphics.Drawable;
 
-public class World implements Drawable {
+public class World implements Drawable, MouseListener {
 
 	Case[][] cases;
 	int scl;
@@ -18,6 +20,7 @@ public class World implements Drawable {
 	public World(int x, int y, int scl_) {
 		cases = new Case[x][y];
 		scl = scl_;
+		init();
 		Game.GAME.getDisplay().getCanvas().getDrawables().add(this);
 	}
 
@@ -51,6 +54,36 @@ public class World implements Drawable {
 				g.drawImage(cases[x][y].getImage(), x * scl, y * scl, null);
 			}
 		}
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

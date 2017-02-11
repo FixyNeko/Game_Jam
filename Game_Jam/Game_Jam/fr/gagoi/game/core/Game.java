@@ -1,5 +1,6 @@
 package fr.gagoi.game.core;
 
+import fr.fixyneko.game.world.World;
 import fr.gagoi.game.graphics.Display;
 
 public class Game implements Runnable {
@@ -28,7 +29,7 @@ public class Game implements Runnable {
 	}
 
 	public void update() {
-
+		new World(4,4,64);
 	}
 
 	public int getXOffset() {

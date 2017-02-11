@@ -15,7 +15,7 @@ public class Case {
 	public static final int TYPE_FOOD = 1;
 	public static final int TYPE_ORE = 2;
 	public static final int TYPE_GOLD = 3;
-	public static final int TYPE_POPULARITY = 4;
+	public static final int TYPE_CITY = 4;
 
 	private ResourceList resource = null;
 	private BufferedImage img;
@@ -24,22 +24,22 @@ public class Case {
 		this.resource = new ResourceList();
 		this.resource.setResource(resType, new Random().nextInt(11) * 50 + 800);
 
-		String path = "grass.png";
+		String path = "case_void.png";
 		switch (resType) {
 		case TYPE_WOOD:
-			path = "wood.png";
+			path = "case_wood.png";
 			return;
 		case TYPE_FOOD:
-			path = "food.png";
+			path = "case_food.png";
 			return;
 		case TYPE_ORE:
-			path = "ore.png";
+			path = "case_ore.png";
 			return;
 		case TYPE_GOLD:
-			path = "gold.png";
+			path = "case_gold.png";
 			return;
-		case TYPE_POPULARITY:
-			path = "popularity.png";
+		case TYPE_CITY:
+			path = "case_city.png";
 			return;
 		}
 
