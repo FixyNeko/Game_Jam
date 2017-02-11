@@ -2,6 +2,7 @@ package fr.fixyneko.game.world;
 
 import java.awt.Graphics;
 
+import fr.gagoi.game.core.Game;
 import fr.gagoi.game.graphics.Drawable;
 
 public class World implements Drawable {
@@ -14,6 +15,7 @@ public class World implements Drawable {
 	public World(int x, int y, int scl_) {
 		cases = new Case[x][y];
 		scl = scl_;
+		Game.GAME.getDisplay().getCanvas().getDrawables().add(this);
 	}
 
 	@Override
