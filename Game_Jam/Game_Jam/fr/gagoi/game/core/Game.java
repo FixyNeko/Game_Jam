@@ -30,13 +30,13 @@ public class Game implements Runnable {
 	public void run() {
 		// TODO : Mettre du tour par tour.
 		World world = new World(21, 12, 64);
-		p1 = new Player(0, "Player 1");
-		p2 = new Player(1, "Player 2");
+		p1 = new Player(0, 0, "Player 1");
+		p2 = new Player(1, 0, "Player 2");
 		update();
 	}
 
 	public void update() {
-		playersTurn = (playersTurn+1)%2;
+		playersTurn = (playersTurn + 1) % 2;
 	}
 
 	public int getXOffset() {
