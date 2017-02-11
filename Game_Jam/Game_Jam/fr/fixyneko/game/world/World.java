@@ -1,5 +1,6 @@
 package fr.fixyneko.game.world;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.MouseInfo;
 import java.awt.event.MouseEvent;
@@ -36,6 +37,9 @@ public class World implements Drawable, MouseListener {
 
 	int casesNum = 5;
 	int unitsNum = 5;
+
+	int pointerX = -1;
+	int pointerY = -1;
 
 	BufferedImage HUD;
 	BufferedImage[] sprites = new BufferedImage[casesNum + unitsNum];
@@ -138,12 +142,8 @@ public class World implements Drawable, MouseListener {
 		return u;
 	}
 
-	int pointerX = 0;
-	int pointerY = 0;
-
 	@Override
 	public void draw(Graphics g) {
-
 		double curMouseX = MouseInfo.getPointerInfo().getLocation().getX();
 		double curMouseY = MouseInfo.getPointerInfo().getLocation().getY();
 
@@ -181,7 +181,8 @@ public class World implements Drawable, MouseListener {
 
 		g.drawImage(HUD, 0, 0, null);
 
-		g.drawRect(pointerX * scl - camX + 313, pointerY * scl - camY, 50, 50);
+		g.setColor(Color.BLACK);
+		g.drawRect(pointerX * scl - camX + 313, pointerY * scl - camY, scl, scl);
 	}
 
 	@Override
@@ -192,6 +193,9 @@ public class World implements Drawable, MouseListener {
 
 		pointerX = pointerX * 1400 / Game.GAME.getDisplay().getWidth() + camX - 313;
 		pointerY = pointerY * 800 / Game.GAME.getDisplay().getHeight() + camY;
+		
+		pointerX /= 64;
+		pointerY /= 64;
 
 		System.out.println(pointerX / 64);
 
