@@ -1,6 +1,5 @@
 package fr.fixyneko.game.world;
 
-import java.awt.image.BufferedImage;
 import java.util.Random;
 
 import fr.gagoi.game.utils.ResourceList;
@@ -14,7 +13,6 @@ public class Case {
 	public static final int TYPE_CITY = 4;
 
 	private ResourceList resource = null;
-	private BufferedImage img;
 	int resType;
 
 	public Case(int resType) {
