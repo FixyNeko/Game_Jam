@@ -9,11 +9,14 @@ public class Game implements Runnable {
 
 	private final Display display;
 	private boolean isRunning = true;
+	private final Thread t;
 
 	private int xOffset, yOffset;
 
 	public Game() {
 		this.display = new Display();
+		t = new Thread(this);
+		t.start();
 	}
 
 	public Display getDisplay() {
