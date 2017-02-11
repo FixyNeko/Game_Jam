@@ -17,7 +17,7 @@ public class Case {
 	public static final int TYPE_GOLD = 3;
 	public static final int TYPE_POPULARITY = 4;
 
-	private ResourceList resource;
+	private ResourceList resource = null;
 	private BufferedImage img;
 
 	public Case(int resType) {
@@ -49,6 +49,10 @@ public class Case {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public ResourceList getType() {
+		return this.resource;
 	}
 
 	public Image getImage() {
