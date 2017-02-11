@@ -29,7 +29,7 @@ public class World implements Drawable, MouseListener {
 	double prevMouseX = 0, prevMouseY = 0;
 	int camX = 0, camY = 0;
 
-	int resources[] = { 10, 10, 10, 10 };
+	int resources[] = { 50, 50, 50, 50 };
 
 	BufferedImage HUD;
 	BufferedImage[] sprites = new BufferedImage[5];
