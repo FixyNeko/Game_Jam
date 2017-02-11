@@ -25,7 +25,7 @@ public class ScreenCanvas extends Canvas {
 		if (!drawables.isEmpty())
 			for (Drawable drawable : drawables)
 				drawable.draw(g);
-		getGraphics().drawImage(img.getScaledInstance(Game.GAME.getDisplay().getWidth(), Game.GAME.getDisplay().getHeight(), BufferedImage.SCALE_SMOOTH), 0, 0, null);
+		getGraphics().drawImage(img.getScaledInstance(Game.GAME.getDisplay().getWidth(), Game.GAME.getDisplay().getHeight(), BufferedImage.SCALE_DEFAULT), 0, 0, null);
 	}
 
 	public Vector<Drawable> getDrawables() {
