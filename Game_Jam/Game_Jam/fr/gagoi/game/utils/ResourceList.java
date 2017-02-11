@@ -8,9 +8,9 @@ public class ResourceList {
 	public static final int TYPE_GOLD = 3;
 	public static final int TYPE_POPULARITY = 4;
 
-	private int wood, food, ore, gold, popularity;
+	private float wood, food, ore, gold, popularity;
 
-	public int getResource(int type) {
+	public float getResource(int type) {
 		switch (type) {
 		case TYPE_WOOD:
 			return wood;
@@ -27,7 +27,7 @@ public class ResourceList {
 		}
 	}
 
-	public void setResource(int type, int val) {
+	public void setResource(int type, float val) {
 		switch (type) {
 		case TYPE_WOOD:
 			this.wood = val;
@@ -47,11 +47,15 @@ public class ResourceList {
 		}
 	}
 
-	public void addResource(int type, int val) {
+	public void addResource(int type, float val) {
 		setResource(type, getResource(type) + val);
 	}
 
-	public void removeResource(int type, int val) {
+	public void removeResource(int type, float val) {
 		setResource(type, getResource(type) - val);
+	}
+	
+	public void multiplyResource(int type, float val) {
+		setResource(type, getResource(type) * val);
 	}
 }

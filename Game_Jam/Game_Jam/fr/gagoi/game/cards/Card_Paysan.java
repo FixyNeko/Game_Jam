@@ -20,7 +20,7 @@ public class Card_Paysan implements Card {
 
 	@Override
 	public void onUse() {
-		
+		//AJOUTE UN TANK SUR LA MAP AVEC 1 D'ATTAQUE ET 1 DE VIE.
 	}
 
 }

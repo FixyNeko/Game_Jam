@@ -20,7 +20,7 @@ public class Card_Tank implements Card {
 
 	@Override
 	public void onUse() {
-		
+		//AJOUTE UN TANK SUR LA MAP AVEC 5 D'ATTAQUE ET 4 DE VIE.
 	}
 
 }

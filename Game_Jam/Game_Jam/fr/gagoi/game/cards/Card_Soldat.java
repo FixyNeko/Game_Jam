@@ -20,7 +20,7 @@ public class Card_Soldat implements Card {
 
 	@Override
 	public void onUse() {
-		
+		//AJOUTE UN SOLDAT SUR LA MAP AVEC 2 D'ATTAQUE ET 2 DE VIE.
 	}
 
 }
