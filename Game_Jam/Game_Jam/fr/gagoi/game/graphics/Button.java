@@ -23,9 +23,9 @@ public class Button implements Drawable, MouseListener {
 		this.width = width;
 		this.height = height;
 		try {
-			texture = ImageIO.read(getClass().getResourceAsStream("/resources/textures/" + texture_name));
+			this.texture = ImageIO.read(getClass().getResourceAsStream("/resources/textures/" + texture_name));
 		} catch (IOException e) {
-			texture = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+			this.texture = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 			Graphics g = texture.getGraphics();
 			g.setColor(Color.RED);
 			g.fillRect(0, 0, width, height);
@@ -40,7 +40,7 @@ public class Button implements Drawable, MouseListener {
 		this.y = y;
 		this.width = width;
 		this.height = height;
-		texture = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+		this.texture = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
 
 		Game.GAME.getDisplay().getCanvas().getDrawables().add(this);
 		Game.GAME.getDisplay().getCanvas().addMouseListener(this);

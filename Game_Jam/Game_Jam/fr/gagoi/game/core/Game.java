@@ -34,11 +34,11 @@ public class Game implements Runnable {
 	public void run() {
 		world = new World(50, 50, 64);
 		deck = new Card[50];
+		p1 = new Player(0, 0, "Player 1");
+		p2 = new Player(1, 0, "Player 2");
 		for (int i = 0; i < 2; i++)
 			for (int j = 0; j < 5; j++)
 				getPlayer(i).addCard(deck[j + i * 5]);
-		p1 = new Player(0, 0, "Player 1");
-		p2 = new Player(1, 0, "Player 2");
 
 		while (!isEnded)
 			update();
@@ -48,6 +48,7 @@ public class Game implements Runnable {
 		for (int i = 0; i < deck.length; i++) {
 			if (deck[i] != null) {
 				getPlayer(playersTurn).addCard(deck[i]);
+				System.out.println(i);
 				break;
 			}
 		}
