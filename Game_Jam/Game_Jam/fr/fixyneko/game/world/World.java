@@ -130,8 +130,7 @@ public class World implements Drawable, MouseListener {
 					g.setColor(Color.BLACK);
 					try {
 						g.drawRect(x * scl - camX + 313, y * scl - camY, scl, scl);
-					} catch (Exception e) {
-					}
+					} catch (Exception e) {}
 				}
 			}
 		}
