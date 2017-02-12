@@ -15,7 +15,7 @@ public class Card_Paysan extends Card {
 
 	@Override
 	public void onUse() {
-		Game.GAME.getWorld().addUnit(new Unit(1, 1, 5, 5, 0, 1, Game.GAME.getPlayer(Game.GAME.getPlayersTurn())));
+		Game.GAME.getWorld().addUnit(new Unit(1, 1, Game.GAME.getWorld().pointerX, Game.GAME.getWorld().pointerY, 0, 1, Game.GAME.getPlayer(Game.GAME.getPlayersTurn())));
 	}
 
 }

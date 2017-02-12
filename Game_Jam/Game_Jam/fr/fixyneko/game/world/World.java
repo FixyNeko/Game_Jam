@@ -40,8 +40,8 @@ public class World implements Drawable, MouseListener {
 	private int casesNum = 5;
 	private int unitsNum = 5;
 
-	private int pointerX = -1;
-	private int pointerY = -1;
+	public int pointerX = -1;
+	public int pointerY = -1;
 
 	private BufferedImage HUD;
 	private BufferedImage[] sprites = new BufferedImage[casesNum + unitsNum];
