@@ -129,6 +129,14 @@ public class World implements Drawable, MouseListener {
 					u.add(cases[x][y]);
 		return u;
 	}
+	
+	public void productiveCases() {
+		for(Unit u:units){
+			Case c = cases[u.getX()][u.getY()];
+			int prod = (int) Math.min(50F, c.getResources().getResource(c.getType()));
+			c.getResources().addResource(c.getType(), prod);
+		}
+	}
 
 	@Override
 	public void draw(Graphics g1) {
@@ -232,11 +240,9 @@ public class World implements Drawable, MouseListener {
 		} else if ((unitSelected == null)
 				|| ((unitClicked != null) && (unitClicked.getPlayer().getId() == Game.GAME.getPlayersTurn())))
 			unitSelected = unitClicked; // clicked on a new unit
-		else if ((unitClicked != null) && (unitClicked.getPlayer().getId() != Game.GAME.getPlayersTurn()))
+		else if ((unitClicked != null) && (unitClicked.getPlayer().getId() != Game.GAME.getPlayersTurn())) {
 			// ATTACK!!!
 			unitClicked.takeHit(unitSelected.getAttack());
-		else if(unitClicked == null && unitSelected == null) {
-			
 		}
 
 	}
