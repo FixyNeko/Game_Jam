@@ -18,7 +18,7 @@ public class Player implements Drawable {
 
 	int cardsNum = 6;
 	Card[] cards = new Card[cardsNum];
-	int[][] cardsPos = {};
+	int[][] cardsPos = {{0,10},{50,10},{100,10},{150,10},{200,10},{250,10}};
 
 	BufferedImage[] drawTextures = new BufferedImage[cardsNum + 1 + 1 + 1];
 
