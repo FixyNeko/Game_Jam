@@ -7,6 +7,7 @@ import fr.fixyneko.game.world.World;
 import fr.gagoi.game.cards.Card;
 import fr.gagoi.game.graphics.Display;
 import fr.gagoi.game.utils.Player;
+import fr.gagoi.game.utils.ResourceList;
 import fr.gagoi.launcher.Launcher;
 
 public class Game implements Runnable {
@@ -46,6 +47,7 @@ public class Game implements Runnable {
 	}
 
 	public void update() {
+		getWorld().getProductiveCases();
 		getPlayer(playersTurn).setPlaying(true);
 		getPlayer(playersTurn).setCarding(true);
 		getPlayer(playersTurn).addCard(new Random().nextInt(Launcher.CARDS.length));
@@ -96,6 +98,11 @@ public class Game implements Runnable {
 	}
 
 	public void checkEnd() {
-
+		Player p = getPlayer(getPlayersTurn());
+		if(p.getResourceList().getResource(ResourceList.TYPE_POPULARITY) >= 1 || p.getResourceList().getResource(ResourceList.TYPE_POPULARITY) <= 0) isEnded = true;
+	}
+	
+	public void setEnd(boolean b){
+		this.isEnded = b;
 	}
 }
