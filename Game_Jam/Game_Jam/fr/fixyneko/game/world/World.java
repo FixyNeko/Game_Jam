@@ -231,6 +231,7 @@ public class World implements Drawable, MouseListener {
 		// }
 
 		if (unitClicked != null && unitSelected != null && unitClicked == unitSelected) {
+			unitSelected = null;
 		} else if (unitClicked == null && unitSelected != null && Math.hypot(pointerX - unitSelected.getX(),
 				pointerY - unitSelected.getY()) <= unitSelected.getMaxMove()) { // clicked
 																				// on
