@@ -49,14 +49,15 @@ public class Player implements Drawable {
 
 	public boolean addCard(Card c) {
 		for (int i = 0; i < cards.length; i++) {
-			if(cards[i] == null){
+			if (cards[i] == null) {
 				try {
 					cards[i] = (Card) c.clone();
-				} catch (CloneNotSupportedException e) {}
-				
+				} catch (CloneNotSupportedException e) {
+				}
+
 				c = null;
 				break;
-				
+
 			}
 		}
 		return false;

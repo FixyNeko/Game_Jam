@@ -1,10 +1,13 @@
 package fr.gagoi.game.core;
 
+import java.util.Random;
+
 import fr.fixyneko.game.world.Unit;
 import fr.fixyneko.game.world.World;
 import fr.gagoi.game.cards.Card;
 import fr.gagoi.game.graphics.Display;
 import fr.gagoi.game.utils.Player;
+import fr.gagoi.launcher.Launcher;
 
 public class Game implements Runnable {
 
@@ -38,7 +41,7 @@ public class Game implements Runnable {
 		p2 = new Player(1, 0, "Player 2");
 		for (int i = 0; i < 2; i++)
 			for (int j = 0; j < 5; j++)
-				getPlayer(i).addCard(deck[j + i * 5]);
+				getPlayer(i).addCard(Launcher.CARDS[new Random().nextInt(Launcher.CARDS.length)]);
 
 		while (!isEnded)
 			update();
@@ -46,13 +49,7 @@ public class Game implements Runnable {
 
 	public void update() {
 		getPlayer(playersTurn).setPlaying(true);
-		for (int i = 0; i < deck.length; i++) {
-			if (deck[i] != null) {
-				getPlayer(playersTurn).addCard(deck[i]);
-				System.out.println(i);
-				break;
-			}
-		}
+		getPlayer(playersTurn).addCard(Launcher.CARDS[new Random().nextInt(Launcher.CARDS.length)]);
 
 		while (getPlayer(playersTurn).isPlaying())
 			;
@@ -77,10 +74,6 @@ public class Game implements Runnable {
 
 	public void setYOffset(int y) {
 		this.yOffset = y;
-	}
-
-	public static void main(String args[]) {
-		GAME = new Game();
 	}
 
 	public int getPlayersTurn() {

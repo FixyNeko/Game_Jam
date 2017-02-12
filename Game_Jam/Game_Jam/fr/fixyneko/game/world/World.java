@@ -182,11 +182,11 @@ public class World implements Drawable, MouseListener {
 			}
 		}
 
-		g.drawImage(HUD, 0, 0, null);
-
 		g.setColor(Color.BLACK);
 		g.setStroke(new BasicStroke(3F));
 		g.drawRect(pointerX * scl - camX + 313, pointerY * scl - camY, scl, scl);
+		
+		g.drawImage(HUD, 0, 0, null);
 	}
 
 	@Override

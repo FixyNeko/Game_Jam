@@ -19,22 +19,23 @@ import fr.gagoi.game.cards.Card_ReussiteEco;
 import fr.gagoi.game.cards.Card_Soldat;
 import fr.gagoi.game.cards.Card_Tank;
 import fr.gagoi.game.cards.Card_Vacances;
+import fr.gagoi.game.core.Game;
 
+@SuppressWarnings("serial")
 public class Launcher extends JFrame {
-	private static final Card[] CARDS = { new Card_Boucherie(), new Card_Declaration(), new Card_Deforestation(),
+	public static final Card[] CARDS = { new Card_Boucherie(), new Card_Declaration(), new Card_Deforestation(),
 			new Card_Dictature(), new Card_Manifestation(), new Card_PartiUnique(), new Card_Paysan(),
 			new Card_PlusProfond(), new Card_ReussiteEco(), new Card_Soldat(), new Card_Tank(), new Card_Vacances() };
 
-
 	public JButton but_play, but_quit;
-	
+
 	public Launcher LAUNCHER;
 
 	public Launcher() {
 		setTitle("Game Laucher");
 		setSize(500, 500);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		
+
 		getContentPane().setLayout(null);
 		but_play = new JButton("Play");
 		but_quit = new JButton("Quit");
@@ -42,6 +43,9 @@ public class Launcher extends JFrame {
 		but_play.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+
+				Game.GAME = new Game();
+
 			}
 		});
 
@@ -57,8 +61,7 @@ public class Launcher extends JFrame {
 
 		getContentPane().add(but_play);
 		getContentPane().add(but_quit);
-		
-		
+
 		setVisible(true);
 		LAUNCHER = this;
 	}
