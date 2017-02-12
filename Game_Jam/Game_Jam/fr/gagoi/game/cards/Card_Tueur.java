@@ -1,5 +1,7 @@
 package fr.gagoi.game.cards;
 
+import fr.gagoi.game.core.Game;
+
 public class Card_Tueur extends Card {
 
 	@Override
@@ -9,7 +11,7 @@ public class Card_Tueur extends Card {
 
 	@Override
 	public void onUse() {
-		System.out.println("C'est win !");
+		Game.GAME.setEnd(true);
 	}
 
 }
