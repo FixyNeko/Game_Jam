@@ -40,7 +40,7 @@ public class Game implements Runnable {
 		p2 = new Player(1, 0, "Player 2");
 		for (int i = 0; i < 2; i++)
 			for (int j = 0; j < 4; j++)
-				getPlayer(i).addCard(Launcher.CARDS[new Random().nextInt(Launcher.CARDS.length)]);
+				getPlayer(i).addCard(new Random().nextInt(Launcher.CARDS.length));
 		while (!isEnded)
 			update();
 	}
