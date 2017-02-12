@@ -77,7 +77,9 @@ public class Player implements Drawable {
 
 	@Override
 	public void draw(Graphics g) {
+		for (int i = 0; i < cards.length; i++) {
 
+		}
 	}
 
 }
