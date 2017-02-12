@@ -19,6 +19,7 @@ public class ScreenCanvas extends Canvas {
 	}
 
 	public void render() {
+		requestFocus();
 		try {
 			Graphics g = img.getGraphics();
 			g.clearRect(0, 0, 1400, 800);
