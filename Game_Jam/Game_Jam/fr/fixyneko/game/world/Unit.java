@@ -9,14 +9,14 @@ public class Unit {
 	public static final int TYPE_SOLDAT = 1;
 	public static final int TYPE_TANK = 2;
 
-	int attack, life;
-	int posX, posY;
-	int unitType;
-	int maxMove;
-	Player player;
+	private int attack, life;
+	private int posX, posY;
+	private int unitType;
+	private int maxMove;
+	private Player player;
 
-	int nextX;
-	int nextY;
+	private int nextX;
+	private int nextY;
 
 	public Unit(int attack, int life, int x, int y, int unitType, int maxMove, Player player) {
 		this.attack = attack;

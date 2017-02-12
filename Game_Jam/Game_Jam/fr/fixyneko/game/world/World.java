@@ -26,27 +26,27 @@ public class World implements Drawable, MouseListener {
 	public static final int TYPE_ORE = 3;
 	public static final int TYPE_CITY = 4;
 
-	Case[][] cases;
-	Vector<Unit> units = new Vector<Unit>();
+	private Case[][] cases;
+	private Vector<Unit> units = new Vector<Unit>();
 
-	int scl;
+	private int scl;
 
-	boolean scroll = false;
-	double prevMouseX = 0, prevMouseY = 0;
-	int camX = 0, camY = 0;
+	private boolean scroll = false;
+	private double prevMouseX = 0, prevMouseY = 0;
+	private int camX = 0, camY = 0;
 
-	int resources[] = { 50, 50, 50, 50 };
+	private int resources[] = { 50, 50, 50, 50 };
 
-	int casesNum = 5;
-	int unitsNum = 5;
+	private int casesNum = 5;
+	private int unitsNum = 5;
 
-	int pointerX = -1;
-	int pointerY = -1;
+	private int pointerX = -1;
+	private int pointerY = -1;
 
-	BufferedImage HUD;
-	BufferedImage[] sprites = new BufferedImage[casesNum + unitsNum];
+	private BufferedImage HUD;
+	private BufferedImage[] sprites = new BufferedImage[casesNum + unitsNum];
 
-	Unit unitSelected;
+	private Unit unitSelected;
 
 	public World(int x, int y, int scl_) {
 		cases = new Case[x][y];

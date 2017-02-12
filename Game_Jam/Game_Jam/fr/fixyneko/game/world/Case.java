@@ -21,34 +21,6 @@ public class Case {
 		this.resType = resType;
 		this.resource = new ResourceList();
 		this.resource.setResource(resType, new Random().nextInt(11) * 50 + 800);
-
-//		String path;
-//		switch (resType) {
-//		case TYPE_WOOD:
-//			path = "case_wood.png";
-//			break;
-//		case TYPE_FOOD:
-//			path = "case_food.png";
-//			break;
-//		case TYPE_ORE:
-//			path = "case_ore.png";
-//			break;
-//		case TYPE_CITY:
-//			path = "case_city.png";
-//			break;
-//		default:
-//			path = "case_void.png";
-//		}
-//
-//		try {
-//			img = ImageIO.read(getClass().getResourceAsStream("/resources/textures/world/" + path));
-//		} catch (IOException e) {
-//			img = new BufferedImage(64, 64, BufferedImage.TYPE_INT_RGB);
-//			Graphics g = img.getGraphics();
-//			g.setColor(Color.RED);
-//			g.fillRect(0, 0, 64, 64);
-//			e.printStackTrace();
-//		}
 	}
 
 	public ResourceList getResources() {
