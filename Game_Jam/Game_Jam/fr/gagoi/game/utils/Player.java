@@ -18,7 +18,7 @@ public class Player implements Drawable, KeyListener {
 	private String name;
 	private int id;
 	private boolean isPlaying = true, isCarding = true;
-	private ResourceList resources;
+	private static ResourceList resources;
 
 	private int[] cards = new int[6];
 	private int[][] cardsPos = { { 1096, 42 }, { 1246, 42 }, { 1096, 254 }, { 1246, 254 }, { 1096, 466 },
@@ -27,7 +27,7 @@ public class Player implements Drawable, KeyListener {
 	public Player(int playerId, int character, String name) {
 		this.id = playerId;
 		this.name = name;
-		this.resources = new ResourceList();
+		resources = new ResourceList();
 		for (int i = 0; i < cards.length - 1; i++)
 			cards[i] = new Random().nextInt(Launcher.CARDS.length);
 		for (int i = 0; i < base_resources[character].length; i++)
@@ -74,6 +74,13 @@ public class Player implements Drawable, KeyListener {
 				if (getCard(i) != -1)
 					g.drawImage(Launcher.cardsTextures[getCard(i)], cardsPos[i][0], cardsPos[i][1], null);
 		}
+		
+		g.drawString(resources.getResource(0)+"", 100, 150);
+		g.drawString(resources.getResource(1)+"", 100, 260);
+		g.drawString(resources.getResource(2)+"", 100, 370);
+		g.drawString(resources.getResource(3)+"", 100, 480);
+		g.drawString(resources.getResource(4)+"", 100, 590);
+		
 	}
 
 	public int getCard(int j) {

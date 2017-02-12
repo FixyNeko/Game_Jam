@@ -134,7 +134,8 @@ public class World implements Drawable, MouseListener {
 		for(Unit u:units){
 			Case c = cases[u.getX()][u.getY()];
 			int prod = (int) Math.min(50F, c.getResources().getResource(c.getType()));
-			c.getResources().addResource(c.getType(), prod);
+			c.getResources().removeResource(c.getType(), prod);
+			Game.GAME.getPlayer(0).getResourceList().addResource(c.getType(), prod);
 		}
 	}
 

@@ -16,6 +16,8 @@ public class Card_Soldat extends Card {
 	@Override
 	public void onUse() {
 		Game.GAME.getWorld().addUnit(new Unit(2, 2, Game.GAME.getWorld().pointerX, Game.GAME.getWorld().pointerY, 1, 1, Game.GAME.getPlayer(Game.GAME.getPlayersTurn())));
+		Game.GAME.getPlayer(0).getResourceList().removeResource(1, 100);
+		Game.GAME.getPlayer(0).getResourceList().removeResource(2, 50);
 	}
 
 }
