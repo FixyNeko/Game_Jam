@@ -56,6 +56,7 @@ public class Game implements Runnable {
 
 		for (Unit u : getWorld().getUnits(getPlayer(playersTurn)))
 			u.update();
+		this.getWorld().unitSelected = null;
 
 		playersTurn = (playersTurn + 1) % 2;
 	}

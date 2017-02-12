@@ -46,7 +46,7 @@ public class World implements Drawable, MouseListener {
 	private BufferedImage HUD;
 	private BufferedImage[] sprites = new BufferedImage[casesNum + unitsNum];
 
-	private Unit unitSelected;
+	public Unit unitSelected;
 
 	public World(int width, int height, int scl) {
 		this.cases = new Case[width][height];
@@ -158,12 +158,25 @@ public class World implements Drawable, MouseListener {
 			int x = units.get(i).getX();
 			int y = units.get(i).getY();
 			if (((x + 1) * scl - camX > 0) && (x * scl - camX) < 774 && ((y + 1) * scl - camY) > 0
-					&& (y * scl - camY) < 770)
+					&& (y * scl - camY) < 770) {
 				g.drawImage(sprites[units.get(i).getType() + casesNum], units.get(i).getX() * scl - camX + 313,
 						units.get(i).getY() * scl - camY, null);
+				switch (units.get(i).getPlayer().getId()) {
+				case 0:
+					g.setColor(Color.RED);
+					break;
+				case 1:
+					g.setColor(Color.YELLOW);
+					break;
+				}
+				g.setStroke(new BasicStroke(15F));
+				g.drawRect(units.get(i).getX() * scl - camX + 313, units.get(i).getY() * scl - camY, scl / 20,
+						scl / 20);
+			}
 		}
 
 		if (unitSelected != null) {
+			g.setStroke(new BasicStroke(2F));
 			g.setColor(Color.BLUE);
 			g.drawRect(unitSelected.getX() * scl - camX + 313, unitSelected.getY() * scl - camY, scl, scl);
 		}
@@ -173,10 +186,16 @@ public class World implements Drawable, MouseListener {
 		g.drawRect(pointerX * scl - camX + 313, pointerY * scl - camY, scl, scl);
 
 		if (unitSelected != null) {
-			g.setColor(Color.BLUE);
-			g.setStroke(new BasicStroke(1F));
-			;
-			g.drawRect(unitSelected.getX() * scl - camX + 313, unitSelected.getY() * scl - camY, scl, scl);
+			switch (Game.GAME.getPlayersTurn()) {
+			case 0:
+				g.setColor(Color.RED);
+				break;
+			case 1:
+				g.setColor(Color.YELLOW);
+				break;
+			}
+			g.setStroke(new BasicStroke(2F));
+			g.drawRect(unitSelected.getX() * scl - camX + 313, unitSelected.getY() * scl - camY, scl / 20, scl / 20);
 		}
 
 		g.drawImage(HUD, 0, 0, null);
