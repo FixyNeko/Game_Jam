@@ -82,6 +82,8 @@ public class Player implements Drawable, KeyListener{
 
 	@Override
 	public void keyPressed(KeyEvent e) {
+		switch(e.getKeyCode()){
+		}
 	}
 
 	@Override
