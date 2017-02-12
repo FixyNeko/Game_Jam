@@ -5,7 +5,7 @@ import java.awt.Image;
 
 import fr.gagoi.game.core.Game;
 
-public class Card_Dictature implements Card {
+public class Card_Dictature extends Card {
 
 	public Card_Dictature() {
 	}

@@ -5,7 +5,7 @@ import java.awt.Image;
 
 import fr.gagoi.game.core.Game;
 
-public class Card_Deforestation implements Card {
+public class Card_Deforestation extends Card {
 
 	public Card_Deforestation() {
 	}

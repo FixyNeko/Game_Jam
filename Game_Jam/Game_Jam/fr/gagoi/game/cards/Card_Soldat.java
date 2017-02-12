@@ -6,7 +6,7 @@ import java.awt.Image;
 import fr.fixyneko.game.world.Unit;
 import fr.gagoi.game.core.Game;
 
-public class Card_Soldat implements Card {
+public class Card_Soldat extends Card {
 
 	public Card_Soldat() {
 	}

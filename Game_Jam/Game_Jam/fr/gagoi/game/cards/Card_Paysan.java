@@ -5,7 +5,7 @@ import java.awt.Graphics;
 import fr.fixyneko.game.world.Unit;
 import fr.gagoi.game.core.Game;
 
-public class Card_Paysan implements Card {
+public class Card_Paysan extends Card {
 
 	public Card_Paysan() {
 	}

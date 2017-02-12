@@ -5,7 +5,7 @@ import java.awt.Image;
 
 import fr.gagoi.game.core.Game;
 
-public class Card_PlusProfond implements Card {
+public class Card_PlusProfond extends Card {
 
 	public Card_PlusProfond() {
 	}
