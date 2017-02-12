@@ -13,7 +13,7 @@ public class Case {
 	public static final int TYPE_ORE = 3;
 	public static final int TYPE_CITY = 4;
 
-	private ResourceList resource = null;
+	private ResourceList resource;
 	private int resType;
 	private Player player = new Player(-1, 0, "NPC");
 
@@ -38,10 +38,4 @@ public class Case {
 	public Player getPlayer() {
 		return this.player;
 	}
-
-//	public Image getImage() {
-//		// TODO Auto-generated method stub
-//		return img;
-//	}
-
 }

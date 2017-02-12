@@ -34,9 +34,8 @@ public class Unit {
 		this.posX = this.nextX;
 		this.posY = this.nextY;
 
-		if (this.life <= 0) {
-			Game.GAME.getWorld().removeUnit(this);;
-		}
+		if (this.life <= 0)
+			Game.GAME.getWorld().removeUnit(this);
 	}
 
 	public int getType() {

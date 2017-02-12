@@ -48,14 +48,12 @@ public class World implements Drawable, MouseListener {
 
 	private Unit unitSelected;
 
-	public World(int x, int y, int scl_) {
-		cases = new Case[x][y];
-		scl = scl_;
+	public World(int width, int height, int scl) {
+		this.cases = new Case[width][height];
+		this.scl = scl;
+
 		init();
 		initSprites();
-
-		units.add(new Unit(10, 10, 5, 5, 0, 2, Game.GAME.getPlayer(0)));// pop a
-																		// unit
 
 		Game.GAME.getDisplay().getCanvas().getDrawables().add(this);
 		Game.GAME.getDisplay().getCanvas().addMouseListener(this);
@@ -91,32 +89,20 @@ public class World implements Drawable, MouseListener {
 
 	private void initSprites() {
 		try {
+			sprites[0] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/world/" + "case_void.png"));
 			sprites[1] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/world/" + "case_wood.png"));
 			sprites[2] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/world/" + "case_food.png"));
 			sprites[3] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/world/" + "case_ore.png"));
 			sprites[4] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/world/" + "case_city.png"));
-			sprites[0] = ImageIO.read(getClass().getResourceAsStream("/resources/textures/world/" + "case_void.png"));
-		} catch (Exception e) {
-		}
-
-		try {
-			sprites[0 + casesNum] = ImageIO
+			sprites[casesNum + 0] = ImageIO
 					.read(getClass().getResourceAsStream("/resources/textures/units/" + "pecore.png"));
-			// sprites[1 + casesNum] =
-			// ImageIO.read(getClass().getResourceAsStream("/resources/textures/units/"
-			// + "case_void.png"));
-			// sprites[2 + casesNum] =
-			// ImageIO.read(getClass().getResourceAsStream("/resources/textures/units/"
-			// + "case_void.png"));
-			// sprites[3 + casesNum] =
-			// ImageIO.read(getClass().getResourceAsStream("/resources/textures/units/"
-			// + "case_void.png"));
-			// sprites[4 + casesNum] =
-			// ImageIO.read(getClass().getResourceAsStream("/resources/textures/units/"
-			// + "case_void.png"));
-		} catch (Exception e) {
+			sprites[casesNum + 1] = ImageIO
+					.read(getClass().getResourceAsStream("/resources/textures/units/" + "soldat.png"));
+			sprites[casesNum + 2] = ImageIO
+					.read(getClass().getResourceAsStream("/resources/textures/units/" + "tank.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-
 	}
 
 	public void addUnit(Unit u) {
@@ -129,21 +115,18 @@ public class World implements Drawable, MouseListener {
 
 	public Vector<Unit> getUnits(Player p) {
 		Vector<Unit> u = new Vector<Unit>();
-		for (int i = 0; i < units.size(); i++) {
+		for (int i = 0; i < units.size(); i++)
 			if (units.get(i).getPlayer() == p)
 				u.add(units.get(i));
-		}
 		return u;
 	}
 
 	public Vector<Case> getCases(Player p) {
 		Vector<Case> u = new Vector<Case>();
-		for (int x = 0; x < cases.length; x++) {
-			for (int y = 0; y < cases[x].length; y++) {
+		for (int x = 0; x < cases.length; x++)
+			for (int y = 0; y < cases[x].length; y++)
 				if (cases[x][y].getPlayer() == p)
 					u.add(cases[x][y]);
-			}
-		}
 		return u;
 	}
 
@@ -165,25 +148,19 @@ public class World implements Drawable, MouseListener {
 		prevMouseX = curMouseX;
 		prevMouseY = curMouseY;
 
-		for (int x = 0; x < cases.length; x++) {
-			for (int y = 0; y < cases[x].length; y++) {
+		for (int x = 0; x < cases.length; x++)
+			for (int y = 0; y < cases[x].length; y++)
 				if (((x + 1) * scl - camX > 0) && (x * scl - camX) < 774 && ((y + 1) * scl - camY) > 0
-						&& (y * scl - camY) < 770) {
+						&& (y * scl - camY) < 770)
 					g.drawImage(sprites[cases[x][y].getType()], x * scl - camX + 313, y * scl - camY, null);
-				}
-			}
-		}
-
 
 		for (int i = 0; i < units.size(); i++) {
 			int x = units.get(i).getX();
 			int y = units.get(i).getY();
 			if (((x + 1) * scl - camX > 0) && (x * scl - camX) < 774 && ((y + 1) * scl - camY) > 0
-					&& (y * scl - camY) < 770) {
-				// if (units != null)
+					&& (y * scl - camY) < 770)
 				g.drawImage(sprites[units.get(i).getType() + casesNum], units.get(i).getX() * scl - camX + 313,
 						units.get(i).getY() * scl - camY, null);
-			}
 		}
 
 		if (unitSelected != null) {
@@ -225,32 +202,21 @@ public class World implements Drawable, MouseListener {
 			}
 		} // find object clicked
 
-		// if (unitSelected == null || unitClicked.getPlayer().getId() ==
-		// Game.GAME.getPlayersTurn()) {
-		// unitSelected = unitClicked; // clicked on a new unit
-		// }
-
-		if (unitClicked != null && unitSelected != null && unitClicked == unitSelected) {
+		if (unitClicked != null && unitSelected != null && unitClicked == unitSelected)
 			unitSelected = null;
-		} else if (unitClicked == null && unitSelected != null && Math.hypot(pointerX - unitSelected.getX(),
-				pointerY - unitSelected.getY()) <= unitSelected.getMaxMove()) { // clicked
-																				// on
-																				// map
-																				// with
-																				// unit
-																				// selected
+		else if (unitClicked == null && unitSelected != null && Math.hypot(pointerX - unitSelected.getX(),
+				pointerY - unitSelected.getY()) <= unitSelected.getMaxMove()) {
+			// clicked on map with unit selected
 			unitSelected.setNextX(pointerX);
 			unitSelected.setNextY(pointerY);
 
 		} else if ((unitSelected == null)
-				|| ((unitClicked != null) && (unitClicked.getPlayer().getId() == Game.GAME.getPlayersTurn()))) {
+				|| ((unitClicked != null) && (unitClicked.getPlayer().getId() == Game.GAME.getPlayersTurn())))
 			unitSelected = unitClicked; // clicked on a new unit
-		} else if ((unitClicked != null) && (unitClicked.getPlayer().getId() != Game.GAME.getPlayersTurn())) {
+		else if ((unitClicked != null) && (unitClicked.getPlayer().getId() != Game.GAME.getPlayersTurn()))
 			// ATTACK!!!
 			unitClicked.takeHit(unitSelected.getAttack());
-		}
 
-		units.get(0).update();
 	}
 
 	@Override
@@ -265,11 +231,9 @@ public class World implements Drawable, MouseListener {
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-
 	}
 }

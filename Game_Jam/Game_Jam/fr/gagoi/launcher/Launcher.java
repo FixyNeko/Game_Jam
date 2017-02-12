@@ -29,7 +29,8 @@ import fr.gagoi.game.core.Game;
 public class Launcher extends JFrame {
 	public static final Card[] CARDS = { new Card_Boucherie(), new Card_Declaration(), new Card_Deforestation(),
 			new Card_Dictature(), new Card_Manifestation(), new Card_PartiUnique(), new Card_Paysan(),
-			new Card_PlusProfond(), new Card_ReussiteEco(), new Card_Soldat(), new Card_Tank(), new Card_Vacances(), new Card_Tueur() };
+			new Card_PlusProfond(), new Card_ReussiteEco(), new Card_Soldat(), new Card_Tank(), new Card_Vacances(),
+			new Card_Tueur() };
 	public static Image[] cardsTextures = new Image[Launcher.CARDS.length];
 
 	public JButton but_play, but_quit;
@@ -49,6 +50,7 @@ public class Launcher extends JFrame {
 			e.printStackTrace();
 		}
 		getContentPane().setLayout(null);
+
 		but_play = new JButton("Play");
 		but_quit = new JButton("Quit");
 

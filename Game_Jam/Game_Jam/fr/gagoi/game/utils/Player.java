@@ -1,10 +1,12 @@
 package fr.gagoi.game.utils;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Random;
 
+import fr.fixyneko.game.world.Unit;
 import fr.gagoi.game.core.Game;
 import fr.gagoi.game.graphics.Drawable;
 import fr.gagoi.launcher.Launcher;
@@ -27,9 +29,8 @@ public class Player implements Drawable, KeyListener {
 		this.id = playerId;
 		this.name = name;
 		this.resources = new ResourceList();
-		for (int i = 0; i < cards.length - 1; i++) {
+		for (int i = 0; i < cards.length - 1; i++)
 			cards[i] = new Random().nextInt(Launcher.CARDS.length);
-		}
 		for (int i = 0; i < base_resources[character].length; i++)
 			this.resources.setResource(i, base_resources[character][i]);
 		Game.GAME.getDisplay().getCanvas().getDrawables().add(this);
@@ -45,12 +46,11 @@ public class Player implements Drawable, KeyListener {
 	}
 
 	public boolean addCard(int c) {
-		for (int i = 0; i < cards.length; i++) {
+		for (int i = 0; i < cards.length; i++)
 			if (cards[i] == -1) {
 				cards[i] = c;
 				return true;
 			}
-		}
 		return false;
 	}
 
@@ -68,9 +68,12 @@ public class Player implements Drawable, KeyListener {
 
 	@Override
 	public void draw(Graphics g) {
-		for (int i = 0; i < cards.length; i++) {
-			if (getCard(i) != -1 && Game.GAME.getPlayersTurn() == id)
-				g.drawImage(Launcher.cardsTextures[getCard(i)], cardsPos[i][0], cardsPos[i][1], null);
+		if (Game.GAME.getPlayersTurn() == id) {
+			g.setColor(Color.BLACK);
+			g.drawString(getName(), 5, 20);
+			for (int i = 0; i < cards.length; i++)
+				if (getCard(i) != -1)
+					g.drawImage(Launcher.cardsTextures[getCard(i)], cardsPos[i][0], cardsPos[i][1], null);
 		}
 	}
 
@@ -132,6 +135,9 @@ public class Player implements Drawable, KeyListener {
 				if (!isCarding) {
 					isPlaying = false;
 					isCarding = true;
+					for (Unit u : Game.GAME.getWorld().getUnits(this))
+						u.update();
+
 				}
 				return;
 			}
