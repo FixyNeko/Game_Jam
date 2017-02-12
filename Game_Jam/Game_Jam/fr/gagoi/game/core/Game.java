@@ -51,6 +51,7 @@ public class Game implements Runnable {
 		getPlayer(playersTurn).addCard(new Random().nextInt(Launcher.CARDS.length));
 
 		while (getPlayer(playersTurn).isPlaying() || getPlayer(playersTurn).isCarding()){
+			System.out.println("");
 		}
 
 		for (Unit u : getWorld().getUnits(getPlayer(playersTurn)))

@@ -131,7 +131,6 @@ public class Player implements Drawable, KeyListener {
 				}
 				return;
 			case KeyEvent.VK_ENTER:
-				System.out.println("tet");
 				if (!isCarding) {
 					isPlaying = false;
 				}
