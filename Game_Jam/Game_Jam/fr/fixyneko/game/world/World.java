@@ -54,7 +54,8 @@ public class World implements Drawable, MouseListener {
 		init();
 		initSprites();
 
-		// units.add(new Unit(10, 10, 5, 5, 0, new Player()));// pop a unit
+		units.add(new Unit(10, 10, 5, 5, 0, 2, Game.GAME.getPlayer(0)));// pop a
+																		// unit
 
 		Game.GAME.getDisplay().getCanvas().getDrawables().add(this);
 		Game.GAME.getDisplay().getCanvas().addMouseListener(this);
@@ -173,24 +174,40 @@ public class World implements Drawable, MouseListener {
 			}
 		}
 
+		// System.out.println(units.size());
+
 		for (int i = 0; i < units.size(); i++) {
 			int x = units.get(i).getX();
 			int y = units.get(i).getY();
 			if (((x + 1) * scl - camX > 0) && (x * scl - camX) < 774 && ((y + 1) * scl - camY) > 0
 					&& (y * scl - camY) < 770) {
-				if (units != null)
-					g.drawImage(sprites[units.get(i).getType() + casesNum - 1], units.get(i).getX() * scl - camX + 313,
-							units.get(i).getY() * scl - camY, null);
+				// if (units != null)
+				g.drawImage(sprites[units.get(i).getType() + casesNum], units.get(i).getX() * scl - camX + 313,
+						units.get(i).getY() * scl - camY, null);
+				// System.out.println(x * scl - camX + 313);
 			}
+		}
+
+		if (unitSelected != null) {
+			g.setColor(Color.BLUE);
+			g.drawRect(unitSelected.getX() * scl - camX + 313, unitSelected.getY() * scl - camY, scl, scl);
 		}
 
 		g.setColor(Color.BLACK);
 		g.setStroke(new BasicStroke(3F));
 		g.drawRect(pointerX * scl - camX + 313, pointerY * scl - camY, scl, scl);
 
+		if (unitSelected != null) {
+			g.setColor(Color.BLUE);
+			g.setStroke(new BasicStroke(1F));
+			;
+			g.drawRect(unitSelected.getX() * scl - camX + 313, unitSelected.getY() * scl - camY, scl, scl);
+		}
+
 		g.drawImage(HUD, 0, 0, null);
 	}
 
+	@SuppressWarnings("unused")
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		pointerX = e.getX() * 1400 / Game.GAME.getDisplay().getWidth() + camX - 313;
@@ -199,23 +216,44 @@ public class World implements Drawable, MouseListener {
 		pointerX /= 64;
 		pointerY /= 64;
 
-		Object objClicked = null;
+		System.out.println(pointerX);
+
+		Unit unitClicked = null;
 
 		for (int i = 0; i < units.size(); i++) {
-			int deltaX = units.get(i).getX() - e.getX();
-			int deltaY = units.get(i).getY() - e.getY();
-			if (deltaX > 0 && deltaX < scl && deltaY > 0 && deltaY < scl) {
-				objClicked = units.get(i);
+			int deltaX = units.get(i).getX() - pointerX;
+			int deltaY = units.get(i).getY() - pointerY;
+			if (units.get(i).getX() == pointerX && units.get(i).getY() == pointerY) {
+				unitClicked = units.get(i);
 				break;
 			}
 		} // find object clicked
 
-		if(objClicked == null) { // clicked on map
-			if(Math.hypot(pointerX - unitSelected.getX(), pointerY - unitSelected.getY()) < unitSelected.getMaxMove()){
-				
-			}
+		// if (unitSelected == null || unitClicked.getPlayer().getId() ==
+		// Game.GAME.getPlayersTurn()) {
+		// unitSelected = unitClicked; // clicked on a new unit
+		// }
+
+		if (unitClicked != null && unitSelected != null && unitClicked == unitSelected) {
+		} else if (unitClicked == null && unitSelected != null && Math.hypot(pointerX - unitSelected.getX(),
+				pointerY - unitSelected.getY()) <= unitSelected.getMaxMove()) { // clicked
+																				// on
+																				// map
+																				// with
+																				// unit
+																				// selected
+			unitSelected.setNextX(pointerX);
+			unitSelected.setNextY(pointerY);
+
+		} else if ((unitSelected == null)
+				|| ((unitClicked != null) && (unitClicked.getPlayer().getId() == Game.GAME.getPlayersTurn()))) {
+			unitSelected = unitClicked; // clicked on a new unit
+		} else if ((unitClicked != null) && (unitClicked.getPlayer().getId() != Game.GAME.getPlayersTurn())) {
+			// ATTACK!!!
+			unitClicked.takeHit(unitSelected.getAttack());
 		}
-		
+
+		units.get(0).update();
 	}
 
 	@Override
