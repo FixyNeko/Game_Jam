@@ -235,6 +235,9 @@ public class World implements Drawable, MouseListener {
 		else if ((unitClicked != null) && (unitClicked.getPlayer().getId() != Game.GAME.getPlayersTurn()))
 			// ATTACK!!!
 			unitClicked.takeHit(unitSelected.getAttack());
+		else if(unitClicked == null && unitSelected == null) {
+			
+		}
 
 	}
 
