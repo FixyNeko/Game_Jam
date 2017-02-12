@@ -174,7 +174,6 @@ public class World implements Drawable, MouseListener {
 			}
 		}
 
-		// System.out.println(units.size());
 
 		for (int i = 0; i < units.size(); i++) {
 			int x = units.get(i).getX();
@@ -184,7 +183,6 @@ public class World implements Drawable, MouseListener {
 				// if (units != null)
 				g.drawImage(sprites[units.get(i).getType() + casesNum], units.get(i).getX() * scl - camX + 313,
 						units.get(i).getY() * scl - camY, null);
-				// System.out.println(x * scl - camX + 313);
 			}
 		}
 
@@ -215,8 +213,6 @@ public class World implements Drawable, MouseListener {
 
 		pointerX /= 64;
 		pointerY /= 64;
-
-		System.out.println(pointerX);
 
 		Unit unitClicked = null;
 
