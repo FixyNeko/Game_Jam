@@ -18,6 +18,7 @@ public class Player implements Drawable {
 
 	int cardsNum = 6;
 	Card[] cards = new Card[cardsNum];
+	int[][] cardsPos = {};
 
 	BufferedImage[] drawTextures = new BufferedImage[cardsNum + 1 + 1 + 1];
 
@@ -78,7 +79,7 @@ public class Player implements Drawable {
 	@Override
 	public void draw(Graphics g) {
 		for (int i = 0; i < cards.length; i++) {
-
+			
 		}
 	}
 
