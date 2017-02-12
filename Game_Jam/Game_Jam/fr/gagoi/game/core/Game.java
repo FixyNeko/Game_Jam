@@ -47,10 +47,11 @@ public class Game implements Runnable {
 
 	public void update() {
 		getPlayer(playersTurn).setPlaying(true);
+		getPlayer(playersTurn).setCarding(true);
 		getPlayer(playersTurn).addCard(new Random().nextInt(Launcher.CARDS.length));
 
-		while (getPlayer(playersTurn).isPlaying())
-			;
+		while (getPlayer(playersTurn).isPlaying() || getPlayer(playersTurn).isCarding()){
+		}
 
 		for (Unit u : getWorld().getUnits(getPlayer(playersTurn)))
 			u.update();

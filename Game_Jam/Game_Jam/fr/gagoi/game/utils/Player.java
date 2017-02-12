@@ -6,7 +6,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Random;
 
-import fr.fixyneko.game.world.Unit;
 import fr.gagoi.game.core.Game;
 import fr.gagoi.game.graphics.Drawable;
 import fr.gagoi.launcher.Launcher;
@@ -132,12 +131,9 @@ public class Player implements Drawable, KeyListener {
 				}
 				return;
 			case KeyEvent.VK_ENTER:
+				System.out.println("tet");
 				if (!isCarding) {
 					isPlaying = false;
-					isCarding = true;
-					for (Unit u : Game.GAME.getWorld().getUnits(this))
-						u.update();
-
 				}
 				return;
 			}
@@ -146,6 +142,14 @@ public class Player implements Drawable, KeyListener {
 	@Override
 	public void keyReleased(KeyEvent e) {
 
+	}
+
+	public boolean isCarding() {
+		return isCarding;
+	}
+
+	public void setCarding(boolean b) {
+		this.isCarding = b;
 	}
 
 }
