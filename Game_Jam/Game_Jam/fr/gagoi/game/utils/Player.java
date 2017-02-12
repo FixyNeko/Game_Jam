@@ -69,7 +69,7 @@ public class Player implements Drawable, KeyListener {
 	@Override
 	public void draw(Graphics g) {
 		for (int i = 0; i < cards.length; i++) {
-			if (getCard(i) != -1)
+			if (getCard(i) != -1 && Game.GAME.getPlayersTurn() == id)
 				g.drawImage(Launcher.cardsTextures[getCard(i)], cardsPos[i][0], cardsPos[i][1], null);
 		}
 	}
@@ -84,42 +84,57 @@ public class Player implements Drawable, KeyListener {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		switch (e.getKeyCode()) {
-		case KeyEvent.VK_NUMPAD1:
-			isCarding = false;
-			Launcher.CARDS[getCard(0)].onUse();
-			cards[0] = -1;
-			return;
-		case KeyEvent.VK_NUMPAD2:
-			isCarding = false;
-			Launcher.CARDS[getCard(1)].onUse();
-			cards[1] = -1;
-			return;
-		case KeyEvent.VK_NUMPAD3:
-			isCarding = false;
-			Launcher.CARDS[getCard(2)].onUse();
-			cards[2] = -1;
-			return;
-		case KeyEvent.VK_NUMPAD4:
-			isCarding = false;
-			Launcher.CARDS[getCard(3)].onUse();
-			cards[3] = -1;
-			return;
-		case KeyEvent.VK_NUMPAD5:
-			isCarding = false;
-			Launcher.CARDS[getCard(4)].onUse();
-			cards[4] = -1;
-			return;
-		case KeyEvent.VK_NUMPAD6:
-			isCarding = false;
-			Launcher.CARDS[getCard(5)].onUse();
-			cards[5] = -1;
-			return;
-		case KeyEvent.VK_ENTER:
-			isPlaying = false;
-			isCarding = true;
-			return;
-		}
+		if (Game.GAME.getPlayersTurn() == id)
+			switch (e.getKeyCode()) {
+			case KeyEvent.VK_NUMPAD7:
+				if (getCard(0) != -1) {
+					isCarding = false;
+					Launcher.CARDS[getCard(0)].onUse();
+					cards[0] = -1;
+				}
+				return;
+			case KeyEvent.VK_NUMPAD8:
+				if (getCard(1) != -1) {
+					isCarding = false;
+					Launcher.CARDS[getCard(1)].onUse();
+					cards[1] = -1;
+				}
+				return;
+			case KeyEvent.VK_NUMPAD4:
+				if (getCard(2) != -1) {
+					isCarding = false;
+					Launcher.CARDS[getCard(2)].onUse();
+					cards[2] = -1;
+				}
+				return;
+			case KeyEvent.VK_NUMPAD5:
+				if (getCard(3) != -1) {
+					isCarding = false;
+					Launcher.CARDS[getCard(3)].onUse();
+					cards[3] = -1;
+				}
+				return;
+			case KeyEvent.VK_NUMPAD1:
+				if (getCard(4) != -1) {
+					isCarding = false;
+					Launcher.CARDS[getCard(4)].onUse();
+					cards[4] = -1;
+				}
+				return;
+			case KeyEvent.VK_NUMPAD2:
+				if (getCard(5) != -1) {
+					isCarding = false;
+					Launcher.CARDS[getCard(5)].onUse();
+					cards[5] = -1;
+				}
+				return;
+			case KeyEvent.VK_ENTER:
+				if (!isCarding) {
+					isPlaying = false;
+					isCarding = true;
+				}
+				return;
+			}
 	}
 
 	@Override
