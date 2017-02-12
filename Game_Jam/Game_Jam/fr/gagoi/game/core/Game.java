@@ -38,14 +38,9 @@ public class Game implements Runnable {
 		world = new World(50, 50, 64);
 		p1 = new Player(0, 0, "Player 1");
 		p2 = new Player(1, 0, "Player 2");
-<<<<<<< Upstream, based on branch 'master' of https://github.com/FixyNeko/Game_Jam/
 		for (int i = 0; i < 2; i++)
 			for (int j = 0; j < 4; j++)
 				getPlayer(i).addCard(Launcher.CARDS[new Random().nextInt(Launcher.CARDS.length)]);
-
-=======
-		
->>>>>>> dcc0321 Correction de toutes les saloperies de Louis.
 		while (!isEnded)
 			update();
 	}
