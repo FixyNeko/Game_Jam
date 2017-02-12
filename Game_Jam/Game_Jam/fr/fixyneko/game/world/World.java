@@ -130,7 +130,7 @@ public class World implements Drawable, MouseListener {
 		return u;
 	}
 	
-	public void productiveCases() {
+	public void updateProductiveCases() {
 		for(Unit u:units){
 			Case c = cases[u.getX()][u.getY()];
 			int prod = (int) Math.min(50F, c.getResources().getResource(c.getType()));

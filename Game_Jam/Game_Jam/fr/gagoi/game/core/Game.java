@@ -47,7 +47,7 @@ public class Game implements Runnable {
 	}
 
 	public void update() {
-		getWorld().getProductiveCases();
+		getWorld().updateProductiveCases();
 		getPlayer(playersTurn).setPlaying(true);
 		getPlayer(playersTurn).setCarding(true);
 		getPlayer(playersTurn).addCard(new Random().nextInt(Launcher.CARDS.length));
