@@ -11,14 +11,16 @@ public class Unit {
 	int attack, life;
 	int posX, posY;
 	int unitType;
+	int maxMove;
 	Player player;
 
-	public Unit(int attack, int life, int x, int y, int unitType, Player player) {
+	public Unit(int attack, int life, int x, int y, int unitType, int maxMove, Player player) {
 		this.attack = attack;
 		this.life = life;
 		this.posX = x;
 		this.posY = y;
 		this.unitType = unitType;
+		this.maxMove = maxMove;
 		this.player = player;
 	}
 	
@@ -47,5 +49,9 @@ public class Unit {
 	
 	public Player getPlayer() {
 		return this.player;
+	}
+
+	public double getMaxMove() {
+		return this.maxMove;
 	}
 }

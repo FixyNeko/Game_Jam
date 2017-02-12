@@ -10,10 +10,10 @@ public class Card_Soldat extends Card {
 
 	public Card_Soldat() {
 	}
-	
+
 	@Override
 	public void draw(Graphics g) {
-		
+
 	}
 
 	@Override
@@ -23,7 +23,7 @@ public class Card_Soldat extends Card {
 
 	@Override
 	public void onUse() {
-		Game.GAME.getWorld().addUnit(new Unit(2, 2, 5, 5, 1, Game.GAME.getPlayer(Game.GAME.getPlayersTurn())));
+		Game.GAME.getWorld().addUnit(new Unit(2, 2, 5, 5, 1, 1, Game.GAME.getPlayer(Game.GAME.getPlayersTurn())));
 	}
 
 }

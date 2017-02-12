@@ -46,6 +46,8 @@ public class World implements Drawable, MouseListener {
 	BufferedImage HUD;
 	BufferedImage[] sprites = new BufferedImage[casesNum + unitsNum];
 
+	Unit unitSelected;
+
 	public World(int x, int y, int scl_) {
 		cases = new Case[x][y];
 		scl = scl_;
@@ -185,7 +187,7 @@ public class World implements Drawable, MouseListener {
 		g.setColor(Color.BLACK);
 		g.setStroke(new BasicStroke(3F));
 		g.drawRect(pointerX * scl - camX + 313, pointerY * scl - camY, scl, scl);
-		
+
 		g.drawImage(HUD, 0, 0, null);
 	}
 
@@ -193,17 +195,27 @@ public class World implements Drawable, MouseListener {
 	public void mouseClicked(MouseEvent e) {
 		pointerX = e.getX() * 1400 / Game.GAME.getDisplay().getWidth() + camX - 313;
 		pointerY = e.getY() * 800 / Game.GAME.getDisplay().getHeight() + camY;
-		
+
 		pointerX /= 64;
 		pointerY /= 64;
+
+		Object objClicked = null;
 
 		for (int i = 0; i < units.size(); i++) {
 			int deltaX = units.get(i).getX() - e.getX();
 			int deltaY = units.get(i).getY() - e.getY();
 			if (deltaX > 0 && deltaX < scl && deltaY > 0 && deltaY < scl) {
+				objClicked = units.get(i);
+				break;
+			}
+		} // find object clicked
 
+		if(objClicked == null) { // clicked on map
+			if(Math.hypot(pointerX - unitSelected.getX(), pointerY - unitSelected.getY()) < unitSelected.getMaxMove()){
+				
 			}
 		}
+		
 	}
 
 	@Override
