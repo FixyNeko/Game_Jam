@@ -9,14 +9,14 @@ import fr.gagoi.game.core.Game;
 import fr.gagoi.game.graphics.Drawable;
 import fr.gagoi.launcher.Launcher;
 
-public class Player implements Drawable, KeyListener{
+public class Player implements Drawable, KeyListener {
 
 	public static int CHARACTER_RICH = 0;
 	public static int[][] base_resources = { { 100, 100, 100, 100, 100 }, { 50, 50, 50, 50, 50 }, };
 
 	private String name;
 	private int id;
-	private boolean isPlaying = true;
+	private boolean isPlaying = true, isCarding = true;
 	private ResourceList resources;
 
 	private int[] cards = new int[6];
@@ -33,6 +33,7 @@ public class Player implements Drawable, KeyListener{
 		for (int i = 0; i < base_resources[character].length; i++)
 			this.resources.setResource(i, base_resources[character][i]);
 		Game.GAME.getDisplay().getCanvas().getDrawables().add(this);
+		Game.GAME.getDisplay().getCanvas().addKeyListener(this);
 	}
 
 	public ResourceList getResourceList() {
@@ -68,7 +69,8 @@ public class Player implements Drawable, KeyListener{
 	@Override
 	public void draw(Graphics g) {
 		for (int i = 0; i < cards.length; i++) {
-			g.drawImage(Launcher.cardsTextures[getCard(i)], cardsPos[i][0], cardsPos[i][1], null);
+			if (getCard(i) != -1)
+				g.drawImage(Launcher.cardsTextures[getCard(i)], cardsPos[i][0], cardsPos[i][1], null);
 		}
 	}
 
@@ -82,13 +84,47 @@ public class Player implements Drawable, KeyListener{
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		switch(e.getKeyCode()){
+		switch (e.getKeyCode()) {
+		case KeyEvent.VK_NUMPAD1:
+			isCarding = false;
+			Launcher.CARDS[getCard(0)].onUse();
+			cards[0] = -1;
+			return;
+		case KeyEvent.VK_NUMPAD2:
+			isCarding = false;
+			Launcher.CARDS[getCard(1)].onUse();
+			cards[1] = -1;
+			return;
+		case KeyEvent.VK_NUMPAD3:
+			isCarding = false;
+			Launcher.CARDS[getCard(2)].onUse();
+			cards[2] = -1;
+			return;
+		case KeyEvent.VK_NUMPAD4:
+			isCarding = false;
+			Launcher.CARDS[getCard(3)].onUse();
+			cards[3] = -1;
+			return;
+		case KeyEvent.VK_NUMPAD5:
+			isCarding = false;
+			Launcher.CARDS[getCard(4)].onUse();
+			cards[4] = -1;
+			return;
+		case KeyEvent.VK_NUMPAD6:
+			isCarding = false;
+			Launcher.CARDS[getCard(5)].onUse();
+			cards[5] = -1;
+			return;
+		case KeyEvent.VK_ENTER:
+			isPlaying = false;
+			isCarding = true;
+			return;
 		}
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		
+
 	}
 
 }
