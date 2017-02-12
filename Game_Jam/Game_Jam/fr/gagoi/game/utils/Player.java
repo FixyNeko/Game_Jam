@@ -89,42 +89,42 @@ public class Player implements Drawable, KeyListener {
 		if (Game.GAME.getPlayersTurn() == id)
 			switch (e.getKeyCode()) {
 			case KeyEvent.VK_NUMPAD7:
-				if (getCard(0) != -1) {
+				if (getCard(0) != -1 && isCarding) {
 					isCarding = false;
 					Launcher.CARDS[getCard(0)].onUse();
 					cards[0] = -1;
 				}
 				return;
 			case KeyEvent.VK_NUMPAD8:
-				if (getCard(1) != -1) {
+				if (getCard(1) != -1 && isCarding) {
 					isCarding = false;
 					Launcher.CARDS[getCard(1)].onUse();
 					cards[1] = -1;
 				}
 				return;
 			case KeyEvent.VK_NUMPAD4:
-				if (getCard(2) != -1) {
+				if (getCard(2) != -1 && isCarding) {
 					isCarding = false;
 					Launcher.CARDS[getCard(2)].onUse();
 					cards[2] = -1;
 				}
 				return;
 			case KeyEvent.VK_NUMPAD5:
-				if (getCard(3) != -1) {
+				if (getCard(3) != -1 && isCarding) {
 					isCarding = false;
 					Launcher.CARDS[getCard(3)].onUse();
 					cards[3] = -1;
 				}
 				return;
 			case KeyEvent.VK_NUMPAD1:
-				if (getCard(4) != -1) {
+				if (getCard(4) != -1 && isCarding) {
 					isCarding = false;
 					Launcher.CARDS[getCard(4)].onUse();
 					cards[4] = -1;
 				}
 				return;
 			case KeyEvent.VK_NUMPAD2:
-				if (getCard(5) != -1) {
+				if (getCard(5) != -1 && isCarding) {
 					isCarding = false;
 					Launcher.CARDS[getCard(5)].onUse();
 					cards[5] = -1;
