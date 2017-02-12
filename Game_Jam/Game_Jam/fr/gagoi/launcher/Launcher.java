@@ -1,8 +1,12 @@
 package fr.gagoi.launcher;
 
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
@@ -26,16 +30,25 @@ public class Launcher extends JFrame {
 	public static final Card[] CARDS = { new Card_Boucherie(), new Card_Declaration(), new Card_Deforestation(),
 			new Card_Dictature(), new Card_Manifestation(), new Card_PartiUnique(), new Card_Paysan(),
 			new Card_PlusProfond(), new Card_ReussiteEco(), new Card_Soldat(), new Card_Tank(), new Card_Vacances() };
+	public static Image[] cardsTextures = new Image[Launcher.CARDS.length];
 
 	public JButton but_play, but_quit;
 
 	public Launcher LAUNCHER;
 
 	public Launcher() {
-		setTitle("Game Laucher");
+		setTitle("Game Launcher");
 		setSize(500, 500);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
+		try {
+			for (int i = 0; i < Launcher.CARDS.length; i++)
+				cardsTextures[i] = ImageIO
+						.read(getClass().getResourceAsStream("/resources/textures/" + Launcher.CARDS[i].getImage()))
+						.getScaledInstance(150, 210, BufferedImage.SCALE_SMOOTH);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		getContentPane().setLayout(null);
 		but_play = new JButton("Play");
 		but_quit = new JButton("Quit");
@@ -43,9 +56,9 @@ public class Launcher extends JFrame {
 		but_play.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
 				Game.GAME = new Game();
-
+				setVisible(false);
+				dispose();
 			}
 		});
 

@@ -1,19 +1,6 @@
 package fr.gagoi.game.cards;
 
-import java.awt.Graphics;
-import java.awt.Image;
-
-import fr.gagoi.game.core.Game;
-
-public class Card_Dictature extends Card {
-
-	public Card_Dictature() {
-	}
-	
-	@Override
-	public void draw(Graphics g) {
-		
-	}
+public class Card_Dictature extends Card {	
 
 	@Override
 	public String getImage() {

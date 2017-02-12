@@ -1,23 +1,12 @@
 package fr.gagoi.game.cards;
 
-import java.awt.Graphics;
-import java.awt.Image;
-
 import fr.gagoi.game.core.Game;
 
 public class Card_Declaration extends Card {
 
-	public Card_Declaration() {
-	}
-	
-	@Override
-	public void draw(Graphics g) {
-		
-	}
-
 	@Override
 	public String getImage() {
-		return "/cartes/lois/declaration.jpg";
+		return "/cartes/lois/declaration_de_guerre.jpg";
 	}
 
 	@Override

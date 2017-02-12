@@ -1,12 +1,15 @@
 package fr.gagoi.game.utils;
 
 import java.awt.Graphics;
-import java.awt.image.BufferedImage;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.util.Random;
 
-import fr.gagoi.game.cards.Card;
+import fr.gagoi.game.core.Game;
 import fr.gagoi.game.graphics.Drawable;
+import fr.gagoi.launcher.Launcher;
 
-public class Player implements Drawable {
+public class Player implements Drawable, KeyListener{
 
 	public static int CHARACTER_RICH = 0;
 	public static int[][] base_resources = { { 100, 100, 100, 100, 100 }, { 50, 50, 50, 50, 50 }, };
@@ -16,28 +19,20 @@ public class Player implements Drawable {
 	private boolean isPlaying = true;
 	private ResourceList resources;
 
-	int cardsNum = 6;
-	Card[] cards = new Card[cardsNum];
-	int[][] cardsPos = {{0,10},{50,10},{100,10},{150,10},{200,10},{250,10}};
-
-	BufferedImage[] drawTextures = new BufferedImage[cardsNum + 1 + 1 + 1];
+	private int[] cards = new int[6];
+	private int[][] cardsPos = { { 1096, 42 }, { 1246, 42 }, { 1096, 254 }, { 1246, 254 }, { 1096, 466 },
+			{ 1246, 466 } };
 
 	public Player(int playerId, int character, String name) {
 		this.id = playerId;
 		this.name = name;
-		// this.deck = new DeckCard[] { new DeckCard(0), new DeckCard(1), new
-		// DeckCard(2), new DeckCard(3),
-		// new DeckCard(4), new DeckCard(5) };
-		// this.slot = new CardSlot(0);
-
-		for (int i = 0; i < cardsNum; i++) {
-			cards[i] = null;
-		}
-
 		this.resources = new ResourceList();
+		for (int i = 0; i < cards.length - 1; i++) {
+			cards[i] = new Random().nextInt(Launcher.CARDS.length);
+		}
 		for (int i = 0; i < base_resources[character].length; i++)
 			this.resources.setResource(i, base_resources[character][i]);
-
+		Game.GAME.getDisplay().getCanvas().getDrawables().add(this);
 	}
 
 	public ResourceList getResourceList() {
@@ -48,17 +43,11 @@ public class Player implements Drawable {
 		return name;
 	}
 
-	public boolean addCard(Card c) {
+	public boolean addCard(int c) {
 		for (int i = 0; i < cards.length; i++) {
-			if (cards[i] == null) {
-				try {
-					cards[i] = (Card) c.clone();
-				} catch (CloneNotSupportedException e) {
-				}
-
-				c = null;
-				break;
-
+			if (cards[i] == -1) {
+				cards[i] = c;
+				return true;
 			}
 		}
 		return false;
@@ -79,8 +68,25 @@ public class Player implements Drawable {
 	@Override
 	public void draw(Graphics g) {
 		for (int i = 0; i < cards.length; i++) {
-			
+			g.drawImage(Launcher.cardsTextures[getCard(i)], cardsPos[i][0], cardsPos[i][1], null);
 		}
+	}
+
+	public int getCard(int j) {
+		return cards[j];
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		
 	}
 
 }

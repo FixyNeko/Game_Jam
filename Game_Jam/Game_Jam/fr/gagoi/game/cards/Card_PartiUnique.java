@@ -1,19 +1,8 @@
 package fr.gagoi.game.cards;
 
-import java.awt.Graphics;
-import java.awt.Image;
-
 import fr.gagoi.game.core.Game;
 
 public class Card_PartiUnique extends Card {
-
-	public Card_PartiUnique() {
-	}
-	
-	@Override
-	public void draw(Graphics g) {
-		
-	}
 
 	@Override
 	public String getImage() {
