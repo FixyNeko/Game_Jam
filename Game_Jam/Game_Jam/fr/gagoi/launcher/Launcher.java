@@ -53,9 +53,11 @@ public class Launcher extends JFrame {
 			logo = ImageIO.read(getClass().getResourceAsStream("/resources/textures/gui/logo.png"));
 			quit = ImageIO.read(getClass().getResourceAsStream("/resources/textures/gui/quit_background.png"));
 
-			for (int i = 0; i < Launcher.CARDS.length; i++)
+			for (int i = 0; i < Launcher.CARDS.length; i++) {
+				System.out.println("/resources/textures" + Launcher.CARDS[i].getImage());
 				cardsTextures[i] = ImageIO
-						.read(getClass().getResourceAsStream("/resources/textures/" + Launcher.CARDS[i].getImage()));
+						.read(getClass().getResourceAsStream("/resources/textures" + Launcher.CARDS[i].getImage()));
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

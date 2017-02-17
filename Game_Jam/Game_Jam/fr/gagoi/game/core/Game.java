@@ -2,6 +2,8 @@ package fr.gagoi.game.core;
 
 import java.util.Random;
 
+import javax.swing.JOptionPane;
+
 import fr.fixyneko.game.world.Unit;
 import fr.fixyneko.game.world.World;
 import fr.gagoi.game.cards.Card;
@@ -100,6 +102,7 @@ public class Game implements Runnable {
 	public void checkEnd() {
 		Player p = getPlayer(getPlayersTurn());
 		if(p.getResourceList().getResource(ResourceList.TYPE_POPULARITY) >= 1 || p.getResourceList().getResource(ResourceList.TYPE_POPULARITY) <= 0) isEnded = true;
+		if(isEnded)JOptionPane.showMessageDialog(display, "BIM LE JEU EST NUL MAIS IL MARCHE (UN PEU)", "#Best ecran de fin",JOptionPane.INFORMATION_MESSAGE);
 	}
 	
 	public void setEnd(boolean b){
